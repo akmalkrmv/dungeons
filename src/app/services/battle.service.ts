@@ -1,5 +1,6 @@
 import { NgForOf } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { makeStateKey } from '@angular/platform-browser';
 import { Card, CardSize, CardType } from '../models/card';
 import { Dice } from '../models/dice';
 import { Enemy, Player } from '../models/player';
@@ -90,7 +91,9 @@ export class BattleService {
     this.dices = [];
 
     for (let i = 0; i < count; i++) {
-      this.dices.push({ value: i });
+      this.dices.push({ value: Math.ceil(Math.random() * 6) });
     }
+
+    return this.dices;
   }
 }
