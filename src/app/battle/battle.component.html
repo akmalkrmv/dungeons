@@ -13,7 +13,10 @@
   </section>
 
   <section class="player-section">
-    <app-player-details class="player-info"></app-player-details>
+    <app-player-details
+      class="player-info"
+      [player]="player"
+    ></app-player-details>
     <app-dice-list></app-dice-list>
   </section>
 </main>

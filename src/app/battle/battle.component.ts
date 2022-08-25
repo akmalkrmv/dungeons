@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Card, CardSize, CardType } from '../models/card';
 import { Dice } from '../models/dice';
+import { BattleService } from '../services/battle.service';
 
 const N_DAMAGE = `<i class="material-icons">border_style</i>`;
 
@@ -54,7 +55,10 @@ export class BattleComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  player = this.battle.player;
+  enemy = this.battle.enemy;
+
+  constructor(private battle: BattleService) {}
 
   ngOnInit(): void {}
 }

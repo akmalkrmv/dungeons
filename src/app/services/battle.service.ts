@@ -6,7 +6,7 @@ import { Enemy, Player } from '../models/player';
 })
 export class BattleService {
   player: Player = {
-    name: 'Jester',
+    name: 'Jamshid',
     maxHealth: 32,
     health: 27,
     maxPower: 20,
@@ -16,7 +16,7 @@ export class BattleService {
     effects: [],
     equipment: [],
     backpack: [],
-    deck: []
+    deck: [],
   };
 
   enemy: Enemy = {
@@ -26,7 +26,7 @@ export class BattleService {
     dicesCount: 4,
     dices: [],
     effects: [],
-    deck: []
+    deck: [],
   };
 
   constructor() {}
