@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card, CardSize, CardType } from '../models/card';
+import { Dice } from '../models/dice';
 import { Enemy, Player } from '../models/player';
 
 const N_DAMAGE = `<i class="material-icons">border_style</i>`;
@@ -70,6 +71,14 @@ export class BattleService {
       size: CardSize.Big,
       cardType: CardType.Neutral,
     },
+  ];
+
+  dices: Dice[] = [
+    { value: 1 },
+    { value: 6 },
+    { value: 2 },
+    { value: 1 },
+    { value: 5 },
   ];
 
   constructor() {}

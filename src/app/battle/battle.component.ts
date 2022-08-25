@@ -12,6 +12,7 @@ export class BattleComponent implements OnInit {
   enemy = this.battle.enemy;
   cards = this.battle.cards;
   specialCards = this.battle.specialCards;
+  dices = this.battle.dices;
 
   constructor(private battle: BattleService) {}
 
