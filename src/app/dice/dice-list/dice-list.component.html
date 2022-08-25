@@ -1,0 +1,14 @@
+<div
+  class="dices"
+  cdkDropList
+  [cdkDropListData]="dices"
+  (cdkDropListDropped)="drop($event)"
+>
+  <app-dice
+    *ngFor="let dice of dices"
+    cdkDrag
+    [value]="dice.value"
+    [cdkDragData]="dice"
+  >
+  </app-dice>
+</div>

@@ -1,0 +1,42 @@
+.player {
+  width: 240px;
+  height: 300px;
+  background-color: #333d;
+  position: absolute;
+  top: -50px;
+  left: -260px;
+}
+
+.player-stats {
+  color: white;
+  font-size: 1.5rem;
+  display: grid;
+  gap: 0.2rem;
+  width: 250px;
+  margin-left: 2rem;
+
+  .player-name {
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .health-bar,
+  .break-bar,
+  .stats-bar {
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+
+  .health-bar {
+    text-align: center;
+    background-color: #b11e;
+  }
+  .break-bar {
+    text-align: center;
+    background-color: #cc1e;
+  }
+  .stats-bar {
+    background-color: #333e;
+  }
+}

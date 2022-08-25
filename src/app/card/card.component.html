@@ -1,0 +1,13 @@
+<header>{{ card.name }}</header>
+
+<section class="content">
+  <div
+    class="drop-zone"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListEnterPredicate]="alreadyUsedPredicate"
+  >
+    <app-dice *ngIf="dice" [value]="dice.value"></app-dice>
+  </div>
+  <div class="description" [innerHTML]="card.description"></div>
+</section>

@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/dungeon_1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  main {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 1fr 1fr 1fr;
+    position: relative;
+
+    .arena {
+      display: grid;
+      place-items: center;
+      grid-template-columns: 4fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+
+      .cards {
+        display: grid;
+        place-items: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .player-section {
+      display: flex;
+      align-items: center;
+      gap: 8rem;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      outline: 4px dashed yellowgreen;
+
+      .player-info {
+        width: 300px;
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+:host {
+  --background: #555;
+  --border-radius: 0.8rem;
+  --dice-size: 5.5rem;
+  --dice-border-radius: 0.5rem;
+
+  width: 20rem;
+  height: 15rem;
+
+  display: grid;
+  grid-template-rows: 2.8rem 1fr;
+  text-align: center;
+
+  color: white;
+  border-radius: var(--border-radius);
+  background-color: var(--background);
+  box-shadow: 2px 2px 3px 2px #3338;
+
+  &.size-small  { height: 10rem; }
+  &.size-medium { height: 17rem; }
+  &.size-big    { height: 25rem; grid-row: 1 / span 2; }
+
+  &.neutral { --background: #555; }
+  &.heal    { --background: #529d2a; }
+  &.shield  { --background: orange; }
+  &.attack  { --background: #cfcf17; }
+  &.ice     { --background: #6ed5f7; }
+  &.fire    { --background: red; }
+  &.poison  { --background: purple; }
+
+  header {
+    padding: 0rem;
+    display: grid;
+    place-items: center;
+    font-weight: bolder;
+    font-size: 1.2rem;
+  }
+
+  .content {
+    background-color: #2225;
+    margin: 0 0.5rem 0.5rem;
+    padding: 1rem;
+    display: grid;
+    align-items: end;
+    justify-items: center;
+    gap: 1rem;
+    border-radius: var(--border-radius);
+
+    .drop-zone {
+      aspect-ratio: 1;
+      width: var(--dice-size);
+      border: 0.15rem #fff dashed;
+      border-radius: var(--dice-border-radius);
+      display: grid;
+      place-items: center;
+    }
+
+    .description {
+      color: #fff;
+      text-align: center;
+      max-width: 20ch;
+      font-size: 1.4rem;
+    }
+
+    .material-icons {
+      font-size: 20px;
+      vertical-align: bottom;
+    }
+  }
+}

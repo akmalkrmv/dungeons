@@ -1,0 +1,19 @@
+<main cdkDropListGroup>
+  <section class="enemy-section">
+    <app-enemy></app-enemy>
+  </section>
+
+  <section class="arena">
+    <div class="cards">
+      <app-card *ngFor="let card of cards" [card]="card"></app-card>
+    </div>
+    <div class="special-cards">
+      <app-card *ngFor="let card of specialCards" [card]="card"></app-card>
+    </div>
+  </section>
+
+  <section class="player-section">
+    <app-player-details class="player-info"></app-player-details>
+    <app-dice-list></app-dice-list>
+  </section>
+</main>

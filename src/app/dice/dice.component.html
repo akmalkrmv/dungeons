@@ -1,0 +1,40 @@
+<div class="dice" [ngSwitch]="value">
+  <ng-container *ngSwitchCase="1">
+    <div class="dot center middle"></div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="2">
+    <div class="dot right top"></div>
+    <div class="dot left bottom"></div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="3">
+    <div class="dot right top"></div>
+    <div class="dot center middle"></div>
+    <div class="dot left bottom"></div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="4">
+    <div class="dot left top"></div>
+    <div class="dot left bottom"></div>
+    <div class="dot right top"></div>
+    <div class="dot right bottom"></div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="5">
+    <div class="dot left top"></div>
+    <div class="dot left bottom"></div>
+    <div class="dot center middle"></div>
+    <div class="dot right top"></div>
+    <div class="dot right bottom"></div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="6">
+    <div class="dot left top"></div>
+    <div class="dot left middle"></div>
+    <div class="dot left bottom"></div>
+    <div class="dot right top"></div>
+    <div class="dot right middle"></div>
+    <div class="dot right bottom"></div>
+  </ng-container>
+</div>
