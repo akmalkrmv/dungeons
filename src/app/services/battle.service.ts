@@ -1,3 +1,4 @@
+import { NgForOf } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Card, CardSize, CardType } from '../models/card';
 import { Dice } from '../models/dice';
@@ -82,4 +83,14 @@ export class BattleService {
   ];
 
   constructor() {}
+
+  generateDices() {
+    const count = this.player.dicesCount;
+
+    this.dices = [];
+
+    for (let i = 0; i < count; i++) {
+      this.dices.push({ value: i });
+    }
+  }
 }

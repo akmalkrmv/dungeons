@@ -5,7 +5,7 @@ import { BattleService } from '../services/battle.service';
   selector: 'app-battle',
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BattleComponent implements OnInit {
   player = this.battle.player;
@@ -16,5 +16,7 @@ export class BattleComponent implements OnInit {
 
   constructor(private battle: BattleService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.battle.generateDices();
+  }
 }
