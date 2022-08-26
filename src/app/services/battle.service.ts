@@ -8,7 +8,7 @@ const N_DAMAGE = `<i class="material-icons">border_style</i>`;
 @Injectable({ providedIn: 'root' })
 export class BattleService {
   player: Player = {
-    name: 'Jamshid',
+    name: 'Jester',
     maxHealth: 32,
     health: 27,
     maxPower: 20,
