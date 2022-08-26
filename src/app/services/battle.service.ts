@@ -1,6 +1,4 @@
-import { NgForOf } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { makeStateKey } from '@angular/platform-browser';
 import { Card, CardSize, CardType } from '../models/card';
 import { Dice } from '../models/dice';
 import { Enemy, Player } from '../models/player';
@@ -75,13 +73,7 @@ export class BattleService {
     },
   ];
 
-  dices: Dice[] = [
-    { value: 1 },
-    { value: 6 },
-    { value: 2 },
-    { value: 1 },
-    { value: 5 },
-  ];
+  dices: Dice[] = [];
 
   constructor() {}
 
