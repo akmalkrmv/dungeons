@@ -1,9 +1,9 @@
 <div class="player-stats">
   <div class="player-name">
-    <span>Dire Wolf</span>
-    <span><i class="material-icons">casino</i>x4</span>
+    <span>{{ enemy.name }}</span>
+    <span><i class="material-icons">casino</i>x{{ enemy.dicesCount }}</span>
   </div>
-  <div class="health-bar">42/42</div>
+  <div class="health-bar">{{ enemy.health }} / {{ enemy.maxHealth }}</div>
   <div class="stats-bar"><i class="material-icons">science</i>x3</div>
 </div>
 <div class="player"></div>

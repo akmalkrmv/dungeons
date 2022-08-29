@@ -1,6 +1,6 @@
 <main cdkDropListGroup>
   <section class="enemy-section">
-    <app-enemy></app-enemy>
+    <app-enemy [enemy]="enemy"></app-enemy>
   </section>
 
   <section class="arena">
@@ -18,5 +18,8 @@
       [player]="player"
     ></app-player-details>
     <app-dice-list [dices]="dices"></app-dice-list>
+    <button class="end-turn-btn">
+      End turn <i class="material-icons">arrow_forward</i>
+    </button>
   </section>
 </main>

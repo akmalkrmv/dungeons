@@ -11,8 +11,15 @@
     height: 100%;
     display: grid;
     place-items: center;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 10rem 1fr 10rem;
     position: relative;
+
+    .enemy-section {
+      width: 100%;
+      display: grid;
+      justify-items: end;
+      padding: 0 2rem;
+    }
 
     .arena {
       display: grid;
@@ -32,16 +39,35 @@
     .player-section {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 8rem;
       width: 100%;
-      position: absolute;
-      bottom: 0;
-      left: 0;
+      padding: 0 2rem;
 
       outline: 4px dashed yellowgreen;
 
       .player-info {
         width: 300px;
+      }
+
+      .end-turn-btn {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 2rem;
+        color: #ddd;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          color: #fff;
+        }
+
+        .material-icons {
+          font-size: 2rem;
+        }
       }
     }
   }
