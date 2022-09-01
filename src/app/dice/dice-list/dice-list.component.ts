@@ -1,10 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Dice } from 'src/app/models/dice';
 
 @Component({
@@ -13,12 +8,10 @@ import { Dice } from 'src/app/models/dice';
   styleUrls: ['./dice-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DiceListComponent implements OnInit {
+export class DiceListComponent {
   @Input() dices!: Dice[];
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   drop(event: CdkDragDrop<Dice[]>) {
     if (event.previousContainer === event.container) {

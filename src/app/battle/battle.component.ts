@@ -8,15 +8,15 @@ import { BattleService } from '../services/battle.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BattleComponent implements OnInit {
-  player = this.battle.player;
-  enemy = this.battle.enemy;
-  cards = this.battle.cards;
-  specialCards = this.battle.specialCards;
-  dices = this.battle.dices;
+  player$ = this.battle.player$;
+  enemy$ = this.battle.enemy$;
+  cards$ = this.battle.cards$;
+  specialCards$ = this.battle.specialCards$;
+  dices$ = this.battle.dices$;
 
   constructor(private battle: BattleService) {}
 
   ngOnInit(): void {
-    this.dices = this.battle.generateDices();
+    this.dices$.next(this.battle.generateDices());
   }
 }

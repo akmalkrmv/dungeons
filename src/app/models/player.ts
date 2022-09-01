@@ -1,10 +1,12 @@
 import { Card } from './card';
 
-export interface Player {
-  name: string;
-  
+export interface IDamagable {
   maxHealth: number;
   health: number;
+}
+
+export interface Player extends IDamagable {
+  name: string;
   maxPower: number;
   power: number;
 
@@ -16,14 +18,11 @@ export interface Player {
   deck: Card[];
 }
 
-export interface Enemy {
+export interface Enemy extends IDamagable {
   name: string;
-  maxHealth: number;
-  health: number;
   effects: string[];
   dicesCount: number;
 
   dices: number[];
   deck: Card[];
 }
-

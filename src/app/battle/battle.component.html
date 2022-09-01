@@ -1,23 +1,26 @@
 <main cdkDropListGroup>
   <section class="enemy-section">
-    <app-enemy [enemy]="enemy"></app-enemy>
+    <app-enemy [enemy]="(enemy$ | async)!"></app-enemy>
   </section>
 
   <section class="arena">
     <div class="cards">
-      <app-card *ngFor="let card of cards" [card]="card"></app-card>
+      <app-card *ngFor="let card of cards$ | async" [card]="card"></app-card>
     </div>
     <div class="special-cards">
-      <app-card *ngFor="let card of specialCards" [card]="card"></app-card>
+      <app-card
+        *ngFor="let card of specialCards$ | async"
+        [card]="card"
+      ></app-card>
     </div>
   </section>
 
   <section class="player-section">
     <app-player-details
       class="player-info"
-      [player]="player"
+      [player]="(player$ | async)!"
     ></app-player-details>
-    <app-dice-list [dices]="dices"></app-dice-list>
+    <app-dice-list [dices]="(dices$ | async)!"></app-dice-list>
     <button class="end-turn-btn">
       End turn <i class="material-icons">arrow_forward</i>
     </button>

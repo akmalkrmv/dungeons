@@ -1,91 +1,52 @@
 import { Injectable } from '@angular/core';
-import { Card, CardSize, CardType } from '../models/card';
+import { BehaviorSubject } from 'rxjs';
+import { Card } from '../models/card';
 import { Dice } from '../models/dice';
-import { Enemy, Player } from '../models/player';
-
-const N_DAMAGE = `<i class="material-icons">border_style</i>`;
+import { IDamagable } from '../models/player';
+import { CardService } from './card.service';
+import { PlayerService } from './player.service';
 
 @Injectable({ providedIn: 'root' })
 export class BattleService {
-  player: Player = {
-    name: 'Jester',
-    maxHealth: 32,
-    health: 27,
-    maxPower: 20,
-    power: 20,
-    dicesCount: 4,
-    dices: [],
-    effects: [],
-    equipment: [],
-    backpack: [],
-    deck: [],
-  };
+  player$ = this.playerService.player$;
+  enemy$ = this.playerService.enemy$;
 
-  enemy: Enemy = {
-    name: 'Dire Wolf',
-    maxHealth: 42,
-    health: 42,
-    dicesCount: 4,
-    dices: [],
-    effects: [],
-    deck: [],
-  };
+  cards$ = this.cardService.cards$;
+  specialCards$ = this.cardService.specialCards$;
 
-  cards: Card[] = [
-    {
-      name: 'BUMP',
-      description: 'Dice value +1',
-      size: CardSize.Medium,
-      cardType: CardType.Heal,
-    },
-    {
-      name: 'BATTLE AXE',
-      description: `Do ⚔2x${N_DAMAGE} damage`,
-      size: CardSize.Medium,
-      cardType: CardType.Attack,
-    },
-    {
-      name: 'BUCKLER',
-      description: 'Add 🛡4 to shield',
-      size: CardSize.Medium,
-      cardType: CardType.Shield,
-    },
-    {
-      name: 'SNOWBALL',
-      description: `Do ❄${N_DAMAGE} damage <br> Freeze ❄1 dice`,
-      size: CardSize.Medium,
-      cardType: CardType.Ice,
-    },
-    {
-      name: 'TOXIC OOZE',
-      description: `Do ⚔${N_DAMAGE} damage, <br> on 6, add 💜2 poison`,
-      size: CardSize.Big,
-      cardType: CardType.Poison,
-    },
-  ];
+  dices$ = new BehaviorSubject<Dice[]>([]);
 
-  specialCards: Card[] = [
-    {
-      name: 'COMBAT ROLL',
-      description: 'Reroll a dice <br> (One use this turn)',
-      size: CardSize.Big,
-      cardType: CardType.Neutral,
-    },
-  ];
+  currentAttacker$ = new BehaviorSubject<IDamagable>(this.player$.value);
+  currentDefender$ = new BehaviorSubject<IDamagable>(this.enemy$.value);
 
-  dices: Dice[] = [];
+  constructor(
+    private playerService: PlayerService,
+    private cardService: CardService
+  ) {}
 
-  constructor() {}
+  endTurn() {
+    [this.currentDefender$, this.currentAttacker$] = [
+      this.currentAttacker$,
+      this.currentDefender$,
+    ];
+  }
 
   generateDices() {
-    const count = this.player.dicesCount;
-
-    this.dices = [];
+    const count = this.player$.value.dicesCount;
+    const dices = [];
 
     for (let i = 0; i < count; i++) {
-      this.dices.push({ value: Math.ceil(Math.random() * 6) });
+      dices.push({ value: Math.ceil(Math.random() * 6) });
     }
 
-    return this.dices;
+    return dices;
+  }
+
+  applyCard(card: Card) {
+    const target = this.currentDefender$.value;
+    if (card.dice) {
+      target.health = target.health - card.dice.value;
+      this.currentDefender$.next(target);
+    }
   }
 }

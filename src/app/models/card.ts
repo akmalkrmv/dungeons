@@ -1,3 +1,5 @@
+import { Dice } from './dice';
+
 export enum CardSize {
   Small = 'small',
   Medium = 'medium',
@@ -19,4 +21,5 @@ export interface Card {
   description: string;
   size: CardSize;
   cardType: CardType;
+  dice?: Dice;
 }
