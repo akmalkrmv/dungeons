@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,8 +13,21 @@ import { DiceListComponent } from './dice/dice-list/dice-list.component';
 import { EnemyComponent } from './player/enemy/enemy.component';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, BattleComponent, DiceComponent, PlayerDetailsComponent, DiceListComponent, EnemyComponent],
-  imports: [BrowserModule, AppRoutingModule, DragDropModule],
+  declarations: [
+    AppComponent,
+    CardComponent,
+    BattleComponent,
+    DiceComponent,
+    PlayerDetailsComponent,
+    DiceListComponent,
+    EnemyComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    DragDropModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

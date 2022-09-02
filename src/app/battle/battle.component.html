@@ -5,24 +5,18 @@
 
   <section class="arena">
     <div class="cards">
-      <app-card *ngFor="let card of cards$ | async" [card]="card"></app-card>
+      <div *ngFor="let card of cards$ | async" class="card">
+        <app-card [card]="card" (destroyed)="destroyCard($event)"></app-card>
+      </div>
     </div>
     <div class="special-cards">
-      <app-card
-        *ngFor="let card of specialCards$ | async"
-        [card]="card"
-      ></app-card>
+      <app-card *ngFor="let card of specialCards$ | async" [card]="card"></app-card>
     </div>
   </section>
 
   <section class="player-section">
-    <app-player-details
-      class="player-info"
-      [player]="(player$ | async)!"
-    ></app-player-details>
+    <app-player-details class="player-info" [player]="(player$ | async)!"></app-player-details>
     <app-dice-list [dices]="(dices$ | async)!"></app-dice-list>
-    <button class="end-turn-btn">
-      End turn <i class="material-icons">arrow_forward</i>
-    </button>
+    <button class="end-turn-btn" (click)="endTurn()">End turn <i class="material-icons">arrow_forward</i></button>
   </section>
 </main>

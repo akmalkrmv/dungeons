@@ -5,7 +5,7 @@ import { Player } from 'src/app/models/player';
   selector: 'app-player-details',
   templateUrl: './player-details.component.html',
   styleUrls: ['./player-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerDetailsComponent {
   @Input() player!: Player;

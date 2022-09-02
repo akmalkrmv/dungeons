@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Card } from '../models/card';
 import { BattleService } from '../services/battle.service';
 
 @Component({
@@ -18,5 +19,13 @@ export class BattleComponent implements OnInit {
 
   ngOnInit(): void {
     this.dices$.next(this.battle.generateDices());
+  }
+
+  endTurn() {
+    this.battle.endTurn();
+  }
+
+  destroyCard(card: Card) {
+    this.cards$.next(this.cards$.value.filter((item) => item !== card));
   }
 }

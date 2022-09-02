@@ -29,10 +29,15 @@
       padding: 2rem;
 
       .cards {
+        position: relative;
         display: grid;
         place-items: center;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 2rem;
+
+        .card {
+          position: relative;
+        }
       }
     }
 
