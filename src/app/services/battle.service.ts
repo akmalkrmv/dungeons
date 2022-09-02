@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Card } from '../models/card';
 import { Dice } from '../models/dice';
-import { IDamagable } from '../models/player';
+import { Enemy, Player } from '../models/player';
 import { CardService } from './card.service';
 import { PlayerService } from './player.service';
 
@@ -15,9 +15,7 @@ export class BattleService {
   specialCards$ = this.cardService.specialCards$;
 
   dices$ = new BehaviorSubject<Dice[]>([]);
-
-  currentAttacker$ = new BehaviorSubject<IDamagable>(this.player$.value);
-  currentDefender$ = new BehaviorSubject<IDamagable>(this.enemy$.value);
+  isPlayersTurn$ = new BehaviorSubject<boolean>(true);
 
   constructor(
     private playerService: PlayerService,
@@ -25,10 +23,7 @@ export class BattleService {
   ) {}
 
   endTurn() {
-    [this.currentDefender$, this.currentAttacker$] = [
-      this.currentAttacker$,
-      this.currentDefender$,
-    ];
+    this.isPlayersTurn$.next(!this.isPlayersTurn$.value);
   }
 
   generateDices() {
@@ -43,10 +38,17 @@ export class BattleService {
   }
 
   applyCard(card: Card) {
-    const target = this.currentDefender$.value;
-    if (card.dice) {
-      target.health = target.health - card.dice.value;
-      this.currentDefender$.next(target);
+    const damage = card.dice?.value ?? 0;
+    const target$ = this.isPlayersTurn$.value ? this.enemy$ : this.player$;
+    const damaged = this.takeDamage(target$.value, damage);
+    target$.next(damaged as any);
+  }
+
+  takeDamage<T extends Player | Enemy>(target: T, damage: number): T {
+    if (damage) {
+      target.health = target.health - damage;
     }
+
+    return target;
   }
 }
