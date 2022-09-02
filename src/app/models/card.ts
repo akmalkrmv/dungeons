@@ -22,4 +22,5 @@ export interface Card {
   size: CardSize;
   cardType: CardType;
   dice?: Dice;
+  uses?: number;
 }

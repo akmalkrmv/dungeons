@@ -42,9 +42,10 @@ export class CardService {
   specialCards$ = new BehaviorSubject<Card[]>([
     {
       name: 'COMBAT ROLL',
-      description: 'Reroll a dice <br> (One use this turn)',
+      description: 'Reroll a dice',
       size: CardSize.Big,
       cardType: CardType.Neutral,
+      uses: 3
     },
   ]);
 }

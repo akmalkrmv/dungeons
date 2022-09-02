@@ -9,5 +9,8 @@
   >
     <app-dice *ngIf="dice" [value]="dice.value"></app-dice>
   </div>
-  <div class="description" [innerHTML]="card.description"></div>
+  <div class="description">
+    <div [innerHTML]="card.description"></div>
+    <div *ngIf="card.uses">({{ card.uses }} uses this turn)</div>
+  </div>
 </section>
