@@ -1,6 +1,7 @@
 <main cdkDropListGroup>
-  <section class="enemy-section">
-    <app-enemy [enemy]="(enemy$ | async)!"></app-enemy>
+  <section class="enemy-section" [class.active]="!(isPlayersTurn$ | async)">
+    <app-dice-list *ngIf="!(isPlayersTurn$ | async)" [dices]="(dices$ | async)!"></app-dice-list>
+    <app-enemy [enemy]="(enemy$ | async)!" class="enemy-info"></app-enemy>
   </section>
 
   <section class="arena">
@@ -10,13 +11,13 @@
       </div>
     </div>
     <div class="special-cards">
-      <app-card *ngFor="let card of specialCards$ | async" [card]="card"></app-card>
+      <app-card *ngFor="let card of specialCards$ | async" [card]="card" (destroyed)="destroyCard($event)"></app-card>
     </div>
   </section>
 
-  <section class="player-section">
+  <section class="player-section" [class.active]="isPlayersTurn$ | async">
     <app-player-details class="player-info" [player]="(player$ | async)!"></app-player-details>
-    <app-dice-list [dices]="(dices$ | async)!"></app-dice-list>
+    <app-dice-list *ngIf="isPlayersTurn$ | async" [dices]="(dices$ | async)!"></app-dice-list>
     <button class="end-turn-btn" (click)="endTurn()">End turn <i class="material-icons">arrow_forward</i></button>
   </section>
 </main>

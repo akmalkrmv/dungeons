@@ -2,7 +2,7 @@
   display: block;
   width: 100%;
   height: 100vh;
-  background-image: url("/assets/images/dungeon_1.jpg");
+  background-image: url('/assets/images/dungeon_1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -11,15 +11,8 @@
     height: 100%;
     display: grid;
     place-items: center;
-    grid-template-rows: 10rem 1fr 10rem;
+    grid-template-rows: 10rem 1fr 12rem;
     position: relative;
-
-    .enemy-section {
-      width: 100%;
-      display: grid;
-      justify-items: end;
-      padding: 0 2rem;
-    }
 
     .arena {
       display: grid;
@@ -41,15 +34,34 @@
       }
     }
 
+    .player-section,
+    .enemy-section {
+      outline: 4px dashed white;
+      &.active {
+        outline: 4px dashed yellowgreen;
+      }
+    }
+
+    .enemy-section {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      gap: 8rem;
+      width: 100%;
+      padding: 1rem 2rem;
+
+      .enemy-info {
+        justify-self: flex-end;
+      }
+    }
+
     .player-section {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8rem;
       width: 100%;
-      padding: 0 2rem;
-
-      outline: 4px dashed yellowgreen;
+      padding: 1rem 2rem;
 
       .player-info {
         width: 300px;

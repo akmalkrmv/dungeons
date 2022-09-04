@@ -14,13 +14,15 @@ export enum CardType {
   Fire = 'fire',
   Poison = 'poison',
   Neutral = 'neutral',
+  RerollDice = 'rerolldice',
+  ReturnDice = 'returndice',
 }
 
 export interface Card {
   name: string;
   description: string;
   size: CardSize;
-  cardType: CardType;
+  cardType: CardType | CardType[];
   dice?: Dice;
   uses?: number;
 }
