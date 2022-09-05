@@ -11,6 +11,8 @@ import { DiceComponent } from './dice/dice.component';
 import { PlayerDetailsComponent } from './player/player-details/player-details.component';
 import { DiceListComponent } from './dice/dice-list/dice-list.component';
 import { EnemyComponent } from './player/enemy/enemy.component';
+import { VictoryComponent } from './battle/finish/victory/victory.component';
+import { LossComponent } from './battle/finish/loss/loss.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { EnemyComponent } from './player/enemy/enemy.component';
     PlayerDetailsComponent,
     DiceListComponent,
     EnemyComponent,
+    VictoryComponent,
+    LossComponent,
   ],
   imports: [
     BrowserModule,
