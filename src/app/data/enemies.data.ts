@@ -1,0 +1,38 @@
+export const ENEMIES = {
+  CACTUS: {
+    name: 'Cactus',
+    health: 32,
+    maxHealth: 32,
+    dicesCount: 3,
+    effects: [],
+    dices: [],
+    deck: [],
+  },
+  DIRE_WOLF: {
+    name: 'Dire Wolf',
+    health: 42,
+    maxHealth: 42,
+    dicesCount: 4,
+    effects: [],
+    dices: [],
+    deck: [],
+  },
+  SNOWMAN: {
+    name: 'Snowman',
+    health: 44,
+    maxHealth: 44,
+    dicesCount: 4,
+    effects: [],
+    dices: [],
+    deck: [],
+  },
+  SORCERESS: {
+    name: 'Sorceress',
+    health: 34,
+    maxHealth: 34,
+    dicesCount: 2,
+    effects: [],
+    dices: [],
+    deck: [],
+  },
+};

@@ -11,7 +11,9 @@
       </div>
     </div>
     <div class="special-cards">
-      <app-card *ngFor="let card of specialCards$ | async" [card]="card" (destroyed)="destroyCard($event)"></app-card>
+      <ng-container *ngFor="let card of specialCards$ | async">
+        <app-card [card]="card" (destroyed)="destroyCard($event)"></app-card>
+      </ng-container>
     </div>
   </section>
 

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Card, CardType } from '../models/card';
 import { Dice } from '../models/dice';
 import { Enemy, Player } from '../models/player';
 import { CardService } from './card.service';
+import { DiceService } from './dice.service';
 import { PlayerService } from './player.service';
 
 type PlayerOrEnemySubject = BehaviorSubject<Player> | BehaviorSubject<Enemy>;
@@ -19,28 +21,29 @@ export class BattleService {
   dices$ = new BehaviorSubject<Dice[]>([]);
   isPlayersTurn$ = new BehaviorSubject<boolean>(true);
 
-  constructor(private playerService: PlayerService, private cardService: CardService) {}
+  constructor(
+    private playerService: PlayerService,
+    private cardService: CardService,
+    private diceService: DiceService,
+    private router: Router
+  ) {}
 
-  endTurn() {
-    this.isPlayersTurn$.next(!this.isPlayersTurn$.value);
-    this.dices$.next(this.generateDices());
+  startBattle() {
+    this.isPlayersTurn$.next(true);
+    this.dices$.next(this.diceService.generateDices(this.player$.value.dicesCount));
     this.cards$.next(this.cardService.generateCards());
     this.specialCards$.next(this.cardService.generateSpecialCards());
   }
 
-  generateDices(): Dice[] {
-    const count = this.player$.value.dicesCount;
-    const dices = [];
-
-    for (let i = 0; i < count; i++) {
-      dices.push(this.generateRandomDice());
-    }
-
-    return dices;
+  endBattle(victory: boolean) {
+    this.router.navigateByUrl(victory ? '/battle/victory' : '/battle/loss');
   }
 
-  generateRandomDice(): Dice {
-    return { value: Math.ceil(Math.random() * 6) };
+  endTurn() {
+    this.isPlayersTurn$.next(!this.isPlayersTurn$.value);
+    this.dices$.next(this.diceService.generateDices(this.player$.value.dicesCount));
+    this.cards$.next(this.cardService.generateCards());
+    this.specialCards$.next(this.cardService.generateSpecialCards());
   }
 
   applyCard(card: Card) {
@@ -76,6 +79,9 @@ export class BattleService {
     } else {
       handleCard(card.cardType);
     }
+
+    if (this.player$.value.health <= 0) this.endBattle(false);
+    if (this.enemy$.value.health <= 0) this.endBattle(true);
   }
 
   attack<T extends PlayerOrEnemySubject>(target$: T, damageValue: number): void {
@@ -97,7 +103,7 @@ export class BattleService {
   }
 
   rerollDice(): void {
-    this.dices$.next([...this.dices$.value, this.generateRandomDice()]);
+    this.dices$.next([...this.dices$.value, this.diceService.generateRandomDice()]);
   }
 
   returnDice(dice?: Dice): void {

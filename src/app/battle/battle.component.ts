@@ -19,7 +19,7 @@ export class BattleComponent implements OnInit {
   constructor(private battle: BattleService) {}
 
   ngOnInit(): void {
-    this.dices$.next(this.battle.generateDices());
+    this.battle.startBattle();
   }
 
   endTurn() {
