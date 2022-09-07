@@ -13,8 +13,9 @@ export class BattleComponent implements OnInit {
   enemy$ = this.battle.enemy$;
   cards$ = this.battle.cards$;
   specialCards$ = this.battle.specialCards$;
-  dices$ = this.battle.dices$;
   isPlayersTurn$ = this.battle.isPlayersTurn$;
+  mover$ = this.battle.mover$;
+  taker$ = this.battle.taker$;
 
   constructor(private battle: BattleService) {}
 
@@ -27,7 +28,13 @@ export class BattleComponent implements OnInit {
   }
 
   destroyCard(card: Card) {
-    this.cards$.next(this.cards$.value.filter((item) => item !== card));
-    this.specialCards$.next(this.specialCards$.value.filter((item) => item !== card));
+    const mover$ = this.battle.getMover();
+    const mover = mover$.value;
+
+    mover$.next({
+      ...mover,
+      cards: mover.cards.filter((item) => item !== card),
+      specialCards: mover.specialCards.filter((item) => item !== card),
+    } as any);
   }
 }

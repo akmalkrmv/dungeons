@@ -1,25 +1,29 @@
 <main cdkDropListGroup>
   <section class="enemy-section" [class.active]="!(isPlayersTurn$ | async)">
-    <app-dice-list *ngIf="!(isPlayersTurn$ | async)" [dices]="(dices$ | async)!"></app-dice-list>
-    <app-enemy [enemy]="(enemy$ | async)!" class="enemy-info"></app-enemy>
+    <ng-container *ngIf="enemy$ | async as enemy">
+      <app-dice-list *ngIf="!(isPlayersTurn$ | async)" [dices]="enemy.dices"></app-dice-list>
+      <app-enemy [enemy]="enemy" class="enemy-info"></app-enemy>
+    </ng-container>
   </section>
 
-  <section class="arena">
+  <section class="arena" *ngIf="mover$ | async as mover">
     <div class="cards">
-      <div *ngFor="let card of cards$ | async" class="card">
+      <div *ngFor="let card of mover.cards" class="card">
         <app-card [card]="card" (destroyed)="destroyCard($event)"></app-card>
       </div>
     </div>
     <div class="special-cards">
-      <ng-container *ngFor="let card of specialCards$ | async">
+      <ng-container *ngFor="let card of mover.specialCards">
         <app-card [card]="card" (destroyed)="destroyCard($event)"></app-card>
       </ng-container>
     </div>
   </section>
 
   <section class="player-section" [class.active]="isPlayersTurn$ | async">
-    <app-player-details class="player-info" [player]="(player$ | async)!"></app-player-details>
-    <app-dice-list *ngIf="isPlayersTurn$ | async" [dices]="(dices$ | async)!"></app-dice-list>
+    <ng-container *ngIf="player$ | async as player">
+      <app-player-details class="player-info" [player]="player"></app-player-details>
+      <app-dice-list *ngIf="isPlayersTurn$ | async" [dices]="player.dices"></app-dice-list>
+    </ng-container>
     <button class="end-turn-btn" (click)="endTurn()">End turn <i class="material-icons">arrow_forward</i></button>
   </section>
 </main>

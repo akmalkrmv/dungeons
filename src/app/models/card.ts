@@ -18,6 +18,14 @@ export enum CardType {
   ReturnDice = 'returndice',
 }
 
+export enum CardPredicate {
+  None,
+  Even,
+  Odd,
+  Static,
+  Collecting
+}
+
 export interface Card {
   name: string;
   description: string;
@@ -25,4 +33,5 @@ export interface Card {
   cardType: CardType | CardType[];
   dice?: Dice;
   uses?: number;
+  predicate?: CardPredicate;
 }

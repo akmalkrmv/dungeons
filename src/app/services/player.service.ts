@@ -15,7 +15,8 @@ export class PlayerService {
     effects: [],
     equipment: [],
     backpack: [],
-    deck: [],
+    cards: [],
+    specialCards: [],
   });
 
   enemy$ = new BehaviorSubject<Enemy>({
@@ -25,6 +26,7 @@ export class PlayerService {
     dicesCount: 4,
     dices: [],
     effects: [],
-    deck: [],
+    cards: [],
+    specialCards: [],
   });
 }

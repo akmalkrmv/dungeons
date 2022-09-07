@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, switchMap } from 'rxjs';
 import { Card, CardType } from '../models/card';
 import { Dice } from '../models/dice';
 import { Enemy, Player } from '../models/player';
@@ -18,8 +18,10 @@ export class BattleService {
   cards$ = this.cardService.cards$;
   specialCards$ = this.cardService.specialCards$;
 
-  dices$ = new BehaviorSubject<Dice[]>([]);
   isPlayersTurn$ = new BehaviorSubject<boolean>(true);
+
+  mover$ = this.isPlayersTurn$.pipe(switchMap((isPlayersTurn) => (isPlayersTurn ? this.player$ : this.enemy$)));
+  taker$ = this.isPlayersTurn$.pipe(switchMap((isPlayersTurn) => (isPlayersTurn ? this.enemy$ : this.player$)));
 
   constructor(
     private playerService: PlayerService,
@@ -28,11 +30,13 @@ export class BattleService {
     private router: Router
   ) {}
 
+  getMover = () => (this.isPlayersTurn$.value ? this.player$ : this.enemy$);
+  getTaker = () => (this.isPlayersTurn$.value ? this.enemy$ : this.player$);
+
   startBattle() {
     this.isPlayersTurn$.next(true);
-    this.dices$.next(this.diceService.generateDices(this.player$.value.dicesCount));
-    this.cards$.next(this.cardService.generateCards());
-    this.specialCards$.next(this.cardService.generateSpecialCards());
+    this.resupply(this.player$);
+    this.resupply(this.enemy$);
   }
 
   endBattle(victory: boolean) {
@@ -41,18 +45,26 @@ export class BattleService {
 
   endTurn() {
     this.isPlayersTurn$.next(!this.isPlayersTurn$.value);
-    this.dices$.next(this.diceService.generateDices(this.player$.value.dicesCount));
-    this.cards$.next(this.cardService.generateCards());
-    this.specialCards$.next(this.cardService.generateSpecialCards());
+    this.resupply(this.player$);
+    this.resupply(this.enemy$);
+  }
+
+  resupply<T extends PlayerOrEnemySubject>(target$: T): void {
+    const target = target$.value;
+
+    target$.next({
+      ...target,
+      dices: this.diceService.generateDices(target.dicesCount),
+      cards: this.cardService.generateCards(target),
+      specialCards: this.cardService.generateSpecialCards(target),
+    } as any);
   }
 
   applyCard(card: Card) {
     const dice = card.dice;
     const diceValue = card.dice?.value ?? 0;
-    const isPlayersTurn = this.isPlayersTurn$.value;
-
-    const mover$ = isPlayersTurn ? this.player$ : this.enemy$;
-    const taker$ = isPlayersTurn ? this.enemy$ : this.player$;
+    const mover$ = this.getMover();
+    const taker$ = this.getTaker();
 
     const handleCard = (cardType: CardType) => {
       switch (cardType) {
@@ -103,12 +115,14 @@ export class BattleService {
   }
 
   rerollDice(): void {
-    this.dices$.next([...this.dices$.value, this.diceService.generateRandomDice()]);
+    const mover$ = this.getMover();
+    mover$.next({ ...mover$.value, dices: [...mover$.value.dices, this.diceService.generateRandomDice()] } as any);
   }
 
   returnDice(dice?: Dice): void {
     if (dice) {
-      this.dices$.next([...this.dices$.value, dice]);
+      const mover$ = this.getMover();
+      mover$.next({ ...mover$.value, dices: [...mover$.value.dices, dice] } as any);
     }
   }
 }

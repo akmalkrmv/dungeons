@@ -1,4 +1,5 @@
 import { Card } from './card';
+import { Dice } from './dice';
 
 export interface IDamagable {
   maxHealth: number;
@@ -11,11 +12,12 @@ export interface Player extends IDamagable {
   power: number;
 
   dicesCount: number;
-  dices: number[];
+  dices: Dice[];
   effects: string[];
   equipment: Card[];
   backpack: Card[];
-  deck: Card[];
+  cards: Card[];
+  specialCards: Card[];
 }
 
 export interface Enemy extends IDamagable {
@@ -23,6 +25,7 @@ export interface Enemy extends IDamagable {
   effects: string[];
   dicesCount: number;
 
-  dices: number[];
-  deck: Card[];
+  dices: Dice[];
+  cards: Card[];
+  specialCards: Card[];
 }
