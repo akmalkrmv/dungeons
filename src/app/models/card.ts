@@ -35,19 +35,19 @@ export interface ICard {
   dice?: Dice;
   uses?: number;
   predicate?: CardPredicate;
-  actions?: ICardAction[];
+  actions: ICardAction[];
 }
 
 export class Card implements ICard {
   dice?: Dice;
   uses?: number;
-  actions?: ICardAction[] = [];
   predicate?: CardPredicate = CardPredicate.None;
 
   constructor(
     public name: string,
     public description: string,
     public cardType: CardType | CardType[] = [],
+    public actions: ICardAction[] = [],
     public size: CardSize = CardSize.Medium
   ) {}
 

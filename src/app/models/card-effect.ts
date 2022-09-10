@@ -8,3 +8,9 @@ export class LockEffect {
 export class FreezeEffect {
   constructor(amount: number) {}
 }
+export class PoisonEffect {
+  constructor(amount: number) {}
+}
+export class ShieldEffect {
+  constructor(amount: number) {}
+}
