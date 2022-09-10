@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Player, Enemy } from '../models/player';
+import { Player } from '../models/player';
 
 @Injectable({ providedIn: 'root' })
 export class PlayerService {
   player$ = new BehaviorSubject<Player>({
+    isMainCharacter: true,
     name: 'Jester',
     maxHealth: 32,
     health: 32,
@@ -19,13 +20,18 @@ export class PlayerService {
     specialCards: [],
   });
 
-  enemy$ = new BehaviorSubject<Enemy>({
+  enemy$ = new BehaviorSubject<Player>({
+    isMainCharacter: false,
     name: 'Dire Wolf',
     maxHealth: 42,
     health: 42,
+    maxPower: 0,
+    power: 0,
     dicesCount: 4,
     dices: [],
     effects: [],
+    equipment: [],
+    backpack: [],
     cards: [],
     specialCards: [],
   });

@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { Card, CardType } from '../models/card';
 import { Dice } from '../models/dice';
-import { Enemy, Player } from '../models/player';
+import { Player } from '../models/player';
 import { CardService } from './card.service';
 import { DiceService } from './dice.service';
 import { PlayerService } from './player.service';
 
-type PlayerOrEnemySubject = BehaviorSubject<Player> | BehaviorSubject<Enemy>;
+type PlayerSubject = BehaviorSubject<Player>;
 
 @Injectable({ providedIn: 'root' })
 export class BattleService {
@@ -49,7 +49,7 @@ export class BattleService {
     this.resupply(this.enemy$);
   }
 
-  resupply<T extends PlayerOrEnemySubject>(target$: T): void {
+  resupply<T extends PlayerSubject>(target$: T): void {
     const target = target$.value;
 
     target$.next({
@@ -57,7 +57,7 @@ export class BattleService {
       dices: this.diceService.generateDices(target.dicesCount),
       cards: this.cardService.generateCards(target),
       specialCards: this.cardService.generateSpecialCards(target),
-    } as any);
+    });
   }
 
   applyCard(card: Card) {
@@ -96,33 +96,33 @@ export class BattleService {
     if (this.enemy$.value.health <= 0) this.endBattle(true);
   }
 
-  attack<T extends PlayerOrEnemySubject>(target$: T, damageValue: number): void {
+  attack<T extends PlayerSubject>(target$: T, damageValue: number): void {
     const target = target$.value;
 
     if (damageValue) {
       target.health = Math.max(0, target.health - damageValue);
-      target$.next(target as any);
+      target$.next(target);
     }
   }
 
-  heal<T extends PlayerOrEnemySubject>(target$: T, healValue: number): void {
+  heal<T extends PlayerSubject>(target$: T, healValue: number): void {
     const target = target$.value;
 
     if (healValue) {
       target.health = Math.min(target.maxHealth, target.health + healValue);
-      target$.next(target as any);
+      target$.next(target);
     }
   }
 
   rerollDice(): void {
     const mover$ = this.getMover();
-    mover$.next({ ...mover$.value, dices: [...mover$.value.dices, this.diceService.generateRandomDice()] } as any);
+    mover$.next({ ...mover$.value, dices: [...mover$.value.dices, this.diceService.generateRandomDice()] });
   }
 
   returnDice(dice?: Dice): void {
     if (dice) {
       const mover$ = this.getMover();
-      mover$.next({ ...mover$.value, dices: [...mover$.value.dices, dice] } as any);
+      mover$.next({ ...mover$.value, dices: [...mover$.value.dices, dice] });
     }
   }
 }
