@@ -9,12 +9,12 @@
   <section class="arena" *ngIf="mover$ | async as mover">
     <div class="cards">
       <div *ngFor="let card of mover.cards" class="card">
-        <app-card [card]="card" (destroyed)="destroyCard($event)"></app-card>
+        <app-card [card]="card" (used)="useCard($event)"></app-card>
       </div>
     </div>
     <div class="special-cards">
       <ng-container *ngFor="let card of mover.specialCards">
-        <app-card [card]="card" (destroyed)="destroyCard($event)"></app-card>
+        <app-card [card]="card" (used)="useCard($event)"></app-card>
       </ng-container>
     </div>
   </section>

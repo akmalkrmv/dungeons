@@ -27,6 +27,26 @@ export class BattleComponent implements OnInit {
     this.battle.endTurn();
   }
 
+  useCard(card: Card) {
+    this.battle.applyCard(card);
+
+    if (card.uses !== undefined) {
+      card.uses = card.uses - 1;
+      if (card.uses <= 0) {
+        this.destroyCard(card);
+      } else {
+        this.updateUI();
+      }
+    } else {
+      this.destroyCard(card);
+    }
+  }
+
+  updateUI() {
+    const mover$ = this.battle.getMover();
+    mover$.next({ ...mover$.value } as any);
+  }
+
   destroyCard(card: Card) {
     const mover$ = this.battle.getMover();
     const mover = mover$.value;

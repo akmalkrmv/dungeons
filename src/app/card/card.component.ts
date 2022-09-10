@@ -10,7 +10,6 @@ import {
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Card } from '../models/card';
 import { Dice } from '../models/dice';
-import { BattleService } from '../services/battle.service';
 import { popUp } from '../animations';
 
 @Component({
@@ -23,7 +22,7 @@ import { popUp } from '../animations';
 export class CardComponent {
   @Input() card!: Card;
   @Input() dice?: Dice;
-  @Output() destroyed = new EventEmitter<Card>();
+  @Output() used = new EventEmitter<Card>();
 
   @HostBinding('class') get class() {
     return `${this.card.cardType} size-${this.card.size}`;
@@ -32,10 +31,9 @@ export class CardComponent {
     return this.dice === undefined ? '' : 'active';
   }
 
-  constructor(private battle: BattleService) {}
-
   @HostListener('@popUp.done') popUpDone() {
-    this.dice && this.destroyed.emit(this.card);
+    this.dice && this.used.emit(this.card);
+    this.dice = undefined;
   }
 
   drop(event: CdkDragDrop<Dice[]>) {
@@ -43,7 +41,6 @@ export class CardComponent {
       event.previousContainer.data.splice(event.previousIndex, 1);
       this.dice = event.item.data;
       this.card.dice = this.dice;
-      this.battle.applyCard(this.card);
     }
   }
 

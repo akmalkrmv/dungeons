@@ -23,6 +23,7 @@
 
       .cards {
         position: relative;
+        min-height: 25rem;
         display: grid;
         place-items: center;
         grid-template-columns: 1fr 1fr 1fr;
@@ -31,6 +32,11 @@
         .card {
           position: relative;
         }
+      }
+
+      .special-cards {
+        position: relative;
+        min-height: 25rem;
       }
     }
 
@@ -45,7 +51,7 @@
     .enemy-section {
       display: flex;
       align-items: center;
-      justify-content: end;
+      justify-content: flex-end;
       gap: 8rem;
       width: 100%;
       padding: 1rem 2rem;
