@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Card } from '../models/card';
+import { ICard } from '../models/card';
 import { BattleService } from '../services/battle.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class BattleComponent implements OnInit {
     this.battle.endTurn();
   }
 
-  useCard(card: Card) {
+  useCard(card: ICard) {
     this.battle.applyCard(card);
 
     if (card.uses !== undefined) {
@@ -47,7 +47,7 @@ export class BattleComponent implements OnInit {
     mover$.next({ ...mover$.value } as any);
   }
 
-  destroyCard(card: Card) {
+  destroyCard(card: ICard) {
     const mover$ = this.battle.getMover();
     const mover = mover$.value;
 

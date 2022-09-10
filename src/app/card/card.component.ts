@@ -8,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Card } from '../models/card';
+import { ICard } from '../models/card';
 import { Dice } from '../models/dice';
 import { popUp } from '../animations';
 
@@ -20,9 +20,9 @@ import { popUp } from '../animations';
   animations: [popUp],
 })
 export class CardComponent {
-  @Input() card!: Card;
+  @Input() card!: ICard;
   @Input() dice?: Dice;
-  @Output() used = new EventEmitter<Card>();
+  @Output() used = new EventEmitter<ICard>();
 
   @HostBinding('class') get class() {
     return `${this.card.cardType} size-${this.card.size}`;

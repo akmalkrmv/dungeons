@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, switchMap } from 'rxjs';
-import { Card, CardType } from '../models/card';
+import { ICard, CardType } from '../models/card';
 import { Dice } from '../models/dice';
 import { IPlayer } from '../models/player';
 import { CardService } from './card.service';
@@ -60,7 +60,7 @@ export class BattleService {
     });
   }
 
-  applyCard(card: Card) {
+  applyCard(card: ICard) {
     const dice = card.dice;
     const diceValue = card.dice?.value ?? 0;
     const mover$ = this.getMover();

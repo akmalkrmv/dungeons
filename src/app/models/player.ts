@@ -1,4 +1,5 @@
-import { Card } from './card';
+import { ICard } from './card';
+import { ICardEffect } from './card-effect';
 import { Dice } from './dice';
 
 export interface IPlayer {
@@ -12,10 +13,10 @@ export interface IPlayer {
   dicesCount: number;
   dices: Dice[];
 
-  effects: string[];
+  effects: ICardEffect[];
 
-  cards: Card[];
-  specialCards: Card[];
+  cards: ICard[];
+  specialCards: ICard[];
 }
 
 export class Player implements IPlayer {
@@ -26,10 +27,10 @@ export class Player implements IPlayer {
   maxPower: number = 8;
   power: number = this.maxPower;
 
-  equipment: Card[] = [];
-  backpack: Card[] = [];
-  cards: Card[] = [];
-  specialCards: Card[] = [];
+  equipment: ICard[] = [];
+  backpack: ICard[] = [];
+  cards: ICard[] = [];
+  specialCards: ICard[] = [];
 
   dices: Dice[] = [];
   effects: string[] = [];
@@ -42,8 +43,8 @@ export class Enemy implements IPlayer {
 
   health: number = this.maxHealth;
 
-  cards: Card[] = [];
-  specialCards: Card[] = [];
+  cards: ICard[] = [];
+  specialCards: ICard[] = [];
 
   dices: Dice[] = [];
   effects: string[] = [];

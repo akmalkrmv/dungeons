@@ -1,3 +1,4 @@
+import { ICardAction } from './card-action';
 import { Dice } from './dice';
 
 export enum CardSize {
@@ -26,7 +27,7 @@ export enum CardPredicate {
   Collecting,
 }
 
-export interface Card {
+export interface ICard {
   name: string;
   description: string;
   size: CardSize;
@@ -34,48 +35,23 @@ export interface Card {
   dice?: Dice;
   uses?: number;
   predicate?: CardPredicate;
-  action?: CardAction;
+  actions?: ICardAction[];
 }
 
-export class CardAction {
-  constructor(public parent?: CardAction) {}
+export class Card implements ICard {
+  dice?: Dice;
+  uses?: number;
+  actions?: ICardAction[] = [];
+  predicate?: CardPredicate = CardPredicate.None;
 
-  act() {}
-}
+  constructor(
+    public name: string,
+    public description: string,
+    public cardType: CardType | CardType[] = [],
+    public size: CardSize = CardSize.Medium
+  ) {}
 
-export class DamageAction extends CardAction {
-  constructor(parent?: CardAction, public damage?: number) {
-    super(parent);
-  }
-
-  override act(): CardAction {
-    return this;
-  }
-}
-
-export class FreezeAction extends CardAction {
-  constructor(parent?: CardAction, public freeze?: number) {
-    super(parent);
-  }
-
-  override act(): CardAction {
-    return this;
+  setProperties(properties: Partial<Card>): Card {
+    return { ...this, ...properties };
   }
 }
-export class ReturnDiceAction extends CardAction {
-  constructor(parent?: CardAction) {
-    super(parent);
-  }
-
-  override act(): CardAction {
-    return this;
-  }
-}
-
-// name: 'CAULDRON',
-// description: `Do 1 damage, get a new dice`,
-new ReturnDiceAction(new DamageAction());
-
-// name: 'ICE SHARD',
-// description: `Do ${N_DAMAGE}, Freeze 1 dice`,
-new FreezeAction(new DamageAction(), 1);
