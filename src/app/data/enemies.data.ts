@@ -1,38 +1,8 @@
+import { Enemy } from '../models/player';
+
 export const ENEMIES = {
-  CACTUS: {
-    name: 'Cactus',
-    health: 32,
-    maxHealth: 32,
-    dicesCount: 3,
-    effects: [],
-    dices: [],
-    deck: [],
-  },
-  DIRE_WOLF: {
-    name: 'Dire Wolf',
-    health: 42,
-    maxHealth: 42,
-    dicesCount: 4,
-    effects: [],
-    dices: [],
-    deck: [],
-  },
-  SNOWMAN: {
-    name: 'Snowman',
-    health: 44,
-    maxHealth: 44,
-    dicesCount: 4,
-    effects: [],
-    dices: [],
-    deck: [],
-  },
-  SORCERESS: {
-    name: 'Sorceress',
-    health: 34,
-    maxHealth: 34,
-    dicesCount: 2,
-    effects: [],
-    dices: [],
-    deck: [],
-  },
+  CACTUS: new Enemy('Cactus', 32, 3),
+  DIRE_WOLF: new Enemy('Dire Wolf', 42, 4),
+  SNOWMAN: new Enemy('Snowman', 44, 4),
+  SORCERESS: new Enemy('Sorceress', 34, 2),
 };

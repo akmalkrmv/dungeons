@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { Card, CardType } from '../models/card';
 import { Dice } from '../models/dice';
-import { Player } from '../models/player';
+import { IPlayer } from '../models/player';
 import { CardService } from './card.service';
 import { DiceService } from './dice.service';
 import { PlayerService } from './player.service';
 
-type PlayerSubject = BehaviorSubject<Player>;
+type PlayerSubject = BehaviorSubject<IPlayer>;
 
 @Injectable({ providedIn: 'root' })
 export class BattleService {
@@ -77,10 +77,10 @@ export class BattleService {
           this.heal(mover$, diceValue);
           break;
         case CardType.RerollDice:
-          this.rerollDice();
+          this.rerollDice(mover$);
           break;
         case CardType.ReturnDice:
-          this.returnDice(dice);
+          this.returnDice(mover$, dice);
           break;
         // ....
       }
@@ -97,32 +97,23 @@ export class BattleService {
   }
 
   attack<T extends PlayerSubject>(target$: T, damageValue: number): void {
-    const target = target$.value;
-
-    if (damageValue) {
-      target.health = Math.max(0, target.health - damageValue);
-      target$.next(target);
-    }
+    if (damageValue === undefined) return;
+    const health = Math.max(0, target$.value.health - damageValue);
+    target$.next({ ...target$.value, health });
   }
 
   heal<T extends PlayerSubject>(target$: T, healValue: number): void {
-    const target = target$.value;
-
-    if (healValue) {
-      target.health = Math.min(target.maxHealth, target.health + healValue);
-      target$.next(target);
-    }
+    if (healValue === undefined) return;
+    const health = Math.min(target$.value.maxHealth, target$.value.health + healValue);
+    target$.next({ ...target$.value, health });
   }
 
-  rerollDice(): void {
-    const mover$ = this.getMover();
-    mover$.next({ ...mover$.value, dices: [...mover$.value.dices, this.diceService.generateRandomDice()] });
+  rerollDice<T extends PlayerSubject>(target$: T): void {
+    target$.next({ ...target$.value, dices: [...target$.value.dices, this.diceService.generateRandomDice()] });
   }
 
-  returnDice(dice?: Dice): void {
-    if (dice) {
-      const mover$ = this.getMover();
-      mover$.next({ ...mover$.value, dices: [...mover$.value.dices, dice] });
-    }
+  returnDice<T extends PlayerSubject>(target$: T, dice?: Dice): void {
+    if (dice === undefined) return;
+    target$.next({ ...target$.value, dices: [...target$.value.dices, dice] });
   }
 }

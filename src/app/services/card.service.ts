@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CARDS } from '../data/cards.data';
 import { Card } from '../models/card';
-import { Player } from '../models/player';
+import { IPlayer } from '../models/player';
 
 @Injectable({ providedIn: 'root' })
 export class CardService {
   cards$ = new BehaviorSubject<Card[]>(this.generateCards());
   specialCards$ = new BehaviorSubject<Card[]>(this.generateSpecialCards());
 
-  generateCards(player?: Player): Card[] {
+  generateCards(player?: IPlayer): Card[] {
     if (player && !player.isMainCharacter) {
       return [...CARDS.SORCERESS];
     }
@@ -17,7 +17,7 @@ export class CardService {
     return [...CARDS.HEAL_AND_ATTACK];
   }
 
-  generateSpecialCards(player?: Player): Card[] {
+  generateSpecialCards(player?: IPlayer): Card[] {
     if (player && !player.isMainCharacter) {
       return [];
     }

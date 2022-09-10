@@ -23,7 +23,7 @@ export enum CardPredicate {
   Even,
   Odd,
   Static,
-  Collecting
+  Collecting,
 }
 
 export interface Card {
@@ -34,4 +34,48 @@ export interface Card {
   dice?: Dice;
   uses?: number;
   predicate?: CardPredicate;
+  action?: CardAction;
 }
+
+export class CardAction {
+  constructor(public parent?: CardAction) {}
+
+  act() {}
+}
+
+export class DamageAction extends CardAction {
+  constructor(parent?: CardAction, public damage?: number) {
+    super(parent);
+  }
+
+  override act(): CardAction {
+    return this;
+  }
+}
+
+export class FreezeAction extends CardAction {
+  constructor(parent?: CardAction, public freeze?: number) {
+    super(parent);
+  }
+
+  override act(): CardAction {
+    return this;
+  }
+}
+export class ReturnDiceAction extends CardAction {
+  constructor(parent?: CardAction) {
+    super(parent);
+  }
+
+  override act(): CardAction {
+    return this;
+  }
+}
+
+// name: 'CAULDRON',
+// description: `Do 1 damage, get a new dice`,
+new ReturnDiceAction(new DamageAction());
+
+// name: 'ICE SHARD',
+// description: `Do ${N_DAMAGE}, Freeze 1 dice`,
+new FreezeAction(new DamageAction(), 1);

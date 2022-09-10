@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Player } from 'src/app/models/player';
+import { IPlayer } from 'src/app/models/player';
 
 @Component({
   selector: 'app-enemy',
@@ -8,5 +8,5 @@ import { Player } from 'src/app/models/player';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EnemyComponent {
-  @Input() enemy!: Player;
+  @Input() enemy!: IPlayer;
 }
