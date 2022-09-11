@@ -13,6 +13,7 @@ import { DiceListComponent } from './dice/dice-list/dice-list.component';
 import { EnemyComponent } from './player/enemy/enemy.component';
 import { VictoryComponent } from './battle/finish/victory/victory.component';
 import { LossComponent } from './battle/finish/loss/loss.component';
+import { EffectsComponent } from './player/effects.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,9 @@ import { LossComponent } from './battle/finish/loss/loss.component';
     EnemyComponent,
     VictoryComponent,
     LossComponent,
+    EffectsComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    DragDropModule,
-  ],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DragDropModule],
   providers: [],
   bootstrap: [AppComponent],
 })

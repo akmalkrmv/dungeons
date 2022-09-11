@@ -51,7 +51,7 @@ export class Card implements ICard {
     public size: CardSize = CardSize.Medium
   ) {}
 
-  setProperties(properties: Partial<Card>): Card {
-    return { ...this, ...properties };
+  assign(properties: Partial<Card>): Card {
+    return Object.assign(this, properties);
   }
 }

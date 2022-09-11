@@ -6,5 +6,8 @@
   </div>
   <div class="health-bar">{{ player.health }} / {{ player.maxHealth }}</div>
   <div class="break-bar">DRAW 3</div>
-  <div class="stats-bar"><i class="material-icons">science</i>x3</div>
+  <div class="stats-bar">
+    <app-effects [effects]="player.effects"></app-effects>
+    
+  </div>
 </div>

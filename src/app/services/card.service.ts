@@ -14,7 +14,9 @@ export class CardService {
       return [...CARDS.SORCERESS];
     }
 
-    return [...CARDS.HEAL_AND_ATTACK];
+    // return [...CARDS.HEAL_AND_ATTACK];
+    // return [...CARDS.DIFFERENT_TYPES];
+    return [...CARDS.EFFECTS];
   }
 
   generateSpecialCards(player?: IPlayer): ICard[] {

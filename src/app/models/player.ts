@@ -33,7 +33,7 @@ export class Player implements IPlayer {
   specialCards: ICard[] = [];
 
   dices: Dice[] = [];
-  effects: string[] = [];
+  effects: ICardEffect[] = [];
 
   constructor(public name: string, public maxHealth: number, public dicesCount: number) {}
 }
@@ -47,7 +47,7 @@ export class Enemy implements IPlayer {
   specialCards: ICard[] = [];
 
   dices: Dice[] = [];
-  effects: string[] = [];
+  effects: ICardEffect[] = [];
 
   constructor(public name: string, public maxHealth: number, public dicesCount: number) {}
 }
