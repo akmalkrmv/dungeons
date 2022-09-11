@@ -36,11 +36,17 @@ export class BattleService {
     this.resupply(this.enemy$);
   }
 
+  doCheckIsBattleOver() {
+    if (this.player$.value.health <= 0) this.endBattle(false);
+    if (this.enemy$.value.health <= 0) this.endBattle(true);
+  }
+
   endBattle(victory: boolean) {
     this.router.navigateByUrl(victory ? '/battle/victory' : '/battle/loss');
   }
 
   endTurn() {
+    this.applyEffects();
     this.isPlayersTurn$.next(!this.isPlayersTurn$.value);
     this.resupply(this.player$);
     this.resupply(this.enemy$);
@@ -66,9 +72,20 @@ export class BattleService {
       const { player, enemy } = action.act(battle);
       mover$.next(player);
       taker$.next(enemy);
-    });
 
-    if (this.player$.value.health <= 0) this.endBattle(false);
-    if (this.enemy$.value.health <= 0) this.endBattle(true);
+      this.doCheckIsBattleOver();
+    });
+  }
+
+  applyEffects() {
+    const mover$ = this.getMover();
+    const taker$ = this.getTaker();
+
+    taker$.value.effects.forEach((effect) => {
+      const { player, enemy } = effect.apply({ player: mover$.value, enemy: taker$.value, dice: null! });
+      mover$.next(player);
+      taker$.next(enemy);
+      this.doCheckIsBattleOver();
+    });
   }
 }

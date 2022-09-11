@@ -38,7 +38,7 @@ export const CARDS = {
     new Card('LOCK', `Lock 🔒1 dice`, CardType.Neutral, [new LockAction()]),
     new Card('TOXIC OOZE', `Do ⚔${DICE} damage, <br> on 6, add 💜2 poison`, CardType.Poison, [
       new DamageAction(),
-      new PoisonAction(),
+      new PoisonAction(2),
     ]),
   ],
 

@@ -1,13 +1,7 @@
 import { DiceService } from '../services/dice.service';
 import { BurnEffect, FreezeEffect, ICardEffect, LockEffect, PoisonEffect, ShieldEffect } from './card-effect';
-import { Dice } from './dice';
+import { IBattleInfo } from './battle-info';
 import { IPlayer } from './player';
-
-export interface IBattleInfo {
-  player: IPlayer;
-  enemy: IPlayer;
-  dice: Dice;
-}
 
 export interface ICardAction {
   act(properties: IBattleInfo): IBattleInfo;
