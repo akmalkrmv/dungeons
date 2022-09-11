@@ -17,7 +17,7 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 .cdk-drag-preview {
@@ -53,4 +53,22 @@ app-card {
 
 .material-icons {
   vertical-align: bottom;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 3px 2px #3338;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: hsl(0, 80%, 40%);
+  &:hover {
+    background-color: hsl(0, 100%, 60%);
+  }
 }

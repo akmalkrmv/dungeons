@@ -14,6 +14,7 @@ import { EnemyComponent } from './player/enemy/enemy.component';
 import { VictoryComponent } from './battle/finish/victory/victory.component';
 import { LossComponent } from './battle/finish/loss/loss.component';
 import { EffectsComponent } from './player/effects.component';
+import { ChooseCharacterComponent } from './menu/choose-character/choose-character.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EffectsComponent } from './player/effects.component';
     VictoryComponent,
     LossComponent,
     EffectsComponent,
+    ChooseCharacterComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DragDropModule],
   providers: [],
