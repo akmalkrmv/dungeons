@@ -24,6 +24,6 @@
       <app-player-details class="player-info" [player]="player"></app-player-details>
       <app-dice-list *ngIf="isPlayersTurn$ | async" [dices]="player.dices"></app-dice-list>
     </ng-container>
-    <button class="end-turn-btn" (click)="endTurn()">End turn <i class="material-icons">arrow_forward</i></button>
+    <button class="btn btn-primary" (click)="endTurn()">End turn <i class="material-icons">arrow_forward</i></button>
   </section>
 </main>

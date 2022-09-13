@@ -1,14 +1,14 @@
 :host {
   --background: #555;
   --border-radius: 0.8rem;
-  --dice-size: 5.5rem;
+  --dice-size: 3rem;
   --dice-border-radius: 0.5rem;
 
-  width: 20rem;
+  width: 15rem;
   height: 15rem;
 
   display: grid;
-  grid-template-rows: 2.8rem 1fr;
+  grid-template-rows: 2rem 1fr;
   text-align: center;
 
   color: white;
@@ -17,8 +17,8 @@
   box-shadow: 2px 2px 3px 2px #3338;
 
   &.size-small  { height: 10rem; }
-  &.size-medium { height: 17rem; }
-  &.size-big    { height: 25rem; grid-row: 1 / span 2; }
+  &.size-medium { height: 10rem; }
+  &.size-big    { height: 20rem; grid-row: 1 / span 2; }
 
   &.neutral { --background: #555; }
   &.heal    { --background: #529d2a; }
@@ -33,13 +33,13 @@
     display: grid;
     place-items: center;
     font-weight: bolder;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .content {
     background-color: #2225;
     margin: 0 0.5rem 0.5rem;
-    padding: 1rem;
+    padding: 0.5rem;
     display: grid;
     align-items: end;
     justify-items: center;
@@ -59,7 +59,7 @@
       color: #fff;
       text-align: center;
       max-width: 20ch;
-      font-size: 1.4rem;
+      font-size: 1rem;
     }
 
     .material-icons {

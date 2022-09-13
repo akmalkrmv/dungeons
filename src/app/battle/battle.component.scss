@@ -11,7 +11,7 @@
     height: 100%;
     display: grid;
     place-items: center;
-    grid-template-rows: 10rem 1fr 12rem;
+    grid-template-rows: 2fr 10fr 2fr;
     position: relative;
 
     .arena {
@@ -19,7 +19,7 @@
       place-items: center;
       grid-template-columns: 4fr 1fr;
       gap: 2rem;
-      padding: 2rem;
+      padding: 0.5rem;
 
       .cards {
         position: relative;
@@ -54,7 +54,7 @@
       justify-content: flex-end;
       gap: 8rem;
       width: 100%;
-      padding: 1rem 2rem;
+      padding: 0.5rem 2rem;
 
       .enemy-info {
         justify-self: flex-end;
