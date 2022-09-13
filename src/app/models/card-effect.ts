@@ -36,6 +36,7 @@ export class FreezeEffect implements ICardEffect {
   constructor(public amount: number) {}
 
   apply(battle: IBattleInfo): IBattleInfo {
+    // TODO: JMSHD> реализовать лёд эффект
     return { ...battle };
   }
 }
