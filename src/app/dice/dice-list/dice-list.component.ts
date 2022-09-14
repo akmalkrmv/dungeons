@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Dice } from 'src/app/models/dice';
+import { IDice } from 'src/app/models/dice';
 
 @Component({
   selector: 'app-dice-list',
@@ -9,11 +9,11 @@ import { Dice } from 'src/app/models/dice';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DiceListComponent {
-  @Input() dices!: Dice[];
+  @Input() dices!: IDice[];
 
   constructor() {}
 
-  drop(event: CdkDragDrop<Dice[]>) {
+  drop(event: CdkDragDrop<IDice[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

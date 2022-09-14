@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { ICard } from '../models/card';
-import { Dice } from '../models/dice';
+import { IDice } from '../models/dice';
 import { popUp } from '../animations';
 
 @Component({
@@ -21,7 +21,7 @@ import { popUp } from '../animations';
 })
 export class CardComponent {
   @Input() card!: ICard;
-  @Input() dice?: Dice;
+  @Input() dice?: IDice;
   @Output() used = new EventEmitter<ICard>();
 
   @HostBinding('class') get class() {
@@ -36,7 +36,7 @@ export class CardComponent {
     this.dice = undefined;
   }
 
-  drop(event: CdkDragDrop<Dice[]>) {
+  drop(event: CdkDragDrop<IDice[]>) {
     if (event.previousContainer !== event.container) {
       event.previousContainer.data.splice(event.previousIndex, 1);
       this.dice = event.item.data;

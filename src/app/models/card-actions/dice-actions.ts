@@ -19,7 +19,8 @@ export class ReturnDiceAction implements ICardAction {
   }
 }
 export class RerollDiceAction implements ICardAction {
-  diceService = new DiceService();
+  private diceService = new DiceService();
+  
   act(battle: IBattleInfo): IBattleInfo {
     const { player } = battle;
     const updated = { ...player, dices: [...player.dices, this.diceService.generateRandomDice()] };

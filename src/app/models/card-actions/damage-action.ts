@@ -1,12 +1,12 @@
 import { ShieldEffect } from '../card-effect';
 import { IBattleInfo } from '../battle-info';
-import { Dice } from '../dice';
+import { IDice } from '../dice';
 import { ICardAction } from './card-action';
 
 export class DamageAction implements ICardAction {
   constructor(protected damage: number = 0) {}
 
-  protected getDamage(dice: Dice) {
+  protected getDamage(dice: IDice) {
     return this.damage || dice.value;
   }
 
@@ -36,7 +36,7 @@ export class DoubleDamageAction extends DamageAction {
     super(damage);
   }
 
-  protected override getDamage(dice: Dice): number {
+  protected override getDamage(dice: IDice): number {
     return (this.damage || dice.value) * 2;
   }
 }
@@ -46,7 +46,7 @@ export class TripleDamageAction extends DamageAction {
     super(damage);
   }
 
-  protected override getDamage(dice: Dice): number {
+  protected override getDamage(dice: IDice): number {
     return (this.damage || dice.value) * 3;
   }
 }

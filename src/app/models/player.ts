@@ -1,6 +1,6 @@
 import { ICard } from './card';
 import { ICardEffect } from './card-effect';
-import { Dice } from './dice';
+import { IDice } from './dice';
 
 export interface IPlayer {
   isMainCharacter: boolean;
@@ -11,7 +11,7 @@ export interface IPlayer {
   health: number;
 
   dicesCount: number;
-  dices: Dice[];
+  dices: IDice[];
 
   effects: ICardEffect[];
 
@@ -32,7 +32,7 @@ export class Player implements IPlayer {
   cards: ICard[] = [];
   specialCards: ICard[] = [];
 
-  dices: Dice[] = [];
+  dices: IDice[] = [];
   effects: ICardEffect[] = [];
 
   constructor(public name: string, public maxHealth: number, public dicesCount: number) {}
@@ -46,7 +46,7 @@ export class Enemy implements IPlayer {
   cards: ICard[] = [];
   specialCards: ICard[] = [];
 
-  dices: Dice[] = [];
+  dices: IDice[] = [];
   effects: ICardEffect[] = [];
 
   constructor(public name: string, public maxHealth: number, public dicesCount: number) {}

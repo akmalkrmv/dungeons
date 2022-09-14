@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Dice } from '../models/dice';
+import { IDice } from '../models/dice';
 
 @Injectable({ providedIn: 'root' })
 export class DiceService {
-  generateDices(count: number): Dice[] {
+  generateDices(count: number): IDice[] {
     const dices = [];
 
     for (let i = 0; i < count; i++) {
@@ -13,7 +13,7 @@ export class DiceService {
     return dices;
   }
 
-  generateRandomDice(): Dice {
+  generateRandomDice(): IDice {
     return { value: Math.ceil(Math.random() * 6) };
   }
 }

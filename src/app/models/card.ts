@@ -1,5 +1,5 @@
 import { ICardAction } from './card-actions/card-action';
-import { Dice } from './dice';
+import { IDice } from './dice';
 
 export enum CardSize {
   Small = 'small',
@@ -32,14 +32,14 @@ export interface ICard {
   description: string;
   size: CardSize;
   cardType: CardType | CardType[];
-  dice?: Dice;
+  dice?: IDice;
   uses?: number;
   predicate?: CardPredicate;
   actions: ICardAction[];
 }
 
 export class Card implements ICard {
-  dice?: Dice;
+  dice?: IDice;
   uses?: number;
   predicate?: CardPredicate = CardPredicate.None;
 
