@@ -11,12 +11,12 @@ export class CardService {
 
   generateCards(player?: IPlayer): ICard[] {
     if (player && !player.isMainCharacter) {
-      return [...CARDS.SORCERESS];
+      return this.autoOrderCards([...CARDS.SORCERESS]);
     }
 
-    // return [...CARDS.HEAL_AND_ATTACK];
-    // return [...CARDS.DIFFERENT_TYPES];
-    return [...CARDS.EFFECTS];
+    // return this.autoOrderCards([...CARDS.HEAL_AND_ATTACK]);
+    // return this.autoOrderCards([...CARDS.DIFFERENT_TYPES]);
+    return this.autoOrderCards([...CARDS.EFFECTS]);
   }
 
   generateSpecialCards(player?: IPlayer): ICard[] {
@@ -25,5 +25,9 @@ export class CardService {
     }
 
     return [...CARDS.SPECIALS];
+  }
+
+  autoOrderCards(cards: ICard[]): ICard[] {
+    return cards.map((card, index) => ({ ...card, order: index }));
   }
 }

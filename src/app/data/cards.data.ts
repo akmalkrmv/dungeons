@@ -30,7 +30,10 @@ export const CARDS = {
 
   EFFECTS: [
     new Card('BUMP', `Dice value +1`, CardType.Heal, [new BumpDiceAction()]),
-    new Card('FIRE', `Burn 🔥1 dice`, CardType.Fire, [new BurnAction()]),
+    new Card('FIRE', `Do ⚔2x${DICE} damage <br> Burn 🔥1 dice`, CardType.Fire, [
+      new DoubleDamageAction(),
+      new BurnAction(),
+    ]),
     new Card('BUCKLER', `Add 🛡4 to shield`, CardType.Shield, [new ShieldAction(4)]),
     new Card('SNOWBALL', `Do ❄${DICE} damage <br> Freeze ❄1 dice`, CardType.Ice, [
       new DamageAction(),

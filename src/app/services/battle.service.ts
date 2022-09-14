@@ -54,12 +54,14 @@ export class BattleService {
 
   resupply<T extends BehaviorSubject<IPlayer>>(target$: T): void {
     const target = target$.value;
+    const cards = this.cardService.generateCards(target);
 
     target$.next({
       ...target,
       dices: this.diceService.generateDices(target.dicesCount),
-      cards: this.cardService.generateCards(target),
       specialCards: this.cardService.generateSpecialCards(target),
+      initialCardsCount: cards.length,
+      cards,
     });
   }
 

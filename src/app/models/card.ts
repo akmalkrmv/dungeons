@@ -28,6 +28,7 @@ export enum CardPredicate {
 }
 
 export interface ICard {
+  order: number;
   name: string;
   description: string;
   size: CardSize;
@@ -39,6 +40,7 @@ export interface ICard {
 }
 
 export class Card implements ICard {
+  order: number = 0;
   dice?: IDice;
   uses?: number;
   predicate?: CardPredicate = CardPredicate.None;

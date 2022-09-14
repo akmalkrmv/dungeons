@@ -15,6 +15,7 @@ export interface IPlayer {
 
   effects: ICardEffect[];
 
+  initialCardsCount: number;
   cards: ICard[];
   specialCards: ICard[];
 }
@@ -27,6 +28,7 @@ export class Player implements IPlayer {
   maxPower: number = 8;
   power: number = this.maxPower;
 
+  initialCardsCount: number = 1;
   equipment: ICard[] = [];
   backpack: ICard[] = [];
   cards: ICard[] = [];
@@ -43,6 +45,7 @@ export class Enemy implements IPlayer {
 
   health: number = this.maxHealth;
 
+  initialCardsCount: number = 1;
   cards: ICard[] = [];
   specialCards: ICard[] = [];
 
