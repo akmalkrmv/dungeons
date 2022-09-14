@@ -1,12 +1,13 @@
 import { DiceService } from 'src/app/services/dice.service';
 import { IBattleInfo } from '../battle-info';
+import { Dice } from '../dice';
 import { ICardAction } from './card-action';
 
 export class BumpDiceAction implements ICardAction {
   act(battle: IBattleInfo): IBattleInfo {
     const { player, dice } = battle;
     const bumped = dice.value + 1;
-    const dices = bumped > 6 ? [{ value: 6 }, { value: bumped % 6 }] : [{ value: bumped }];
+    const dices = bumped > 6 ? [new Dice(6), new Dice(bumped % 6)] : [new Dice(bumped)];
     const updated = { ...player, dices: [...player.dices, ...dices] };
     return { ...battle, player: updated };
   }
@@ -20,7 +21,7 @@ export class ReturnDiceAction implements ICardAction {
 }
 export class RerollDiceAction implements ICardAction {
   private diceService = new DiceService();
-  
+
   act(battle: IBattleInfo): IBattleInfo {
     const { player } = battle;
     const updated = { ...player, dices: [...player.dices, this.diceService.generateRandomDice()] };

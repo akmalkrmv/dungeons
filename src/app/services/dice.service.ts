@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IDice } from '../models/dice';
+import { Dice, IDice } from '../models/dice';
 
 @Injectable({ providedIn: 'root' })
 export class DiceService {
@@ -14,6 +14,6 @@ export class DiceService {
   }
 
   generateRandomDice(): IDice {
-    return { value: Math.ceil(Math.random() * 6) };
+    return new Dice(Math.ceil(Math.random() * 6));
   }
 }
