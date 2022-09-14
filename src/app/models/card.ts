@@ -1,4 +1,4 @@
-import { ICardAction } from './card-action';
+import { ICardAction } from './card-actions/card-action';
 import { Dice } from './dice';
 
 export enum CardSize {

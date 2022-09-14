@@ -1,15 +1,16 @@
 import { Card, CardSize, CardType } from '../models/card';
 import {
-  BumpDiceAction,
-  BurnAction,
   DamageAction,
+  RerollDiceAction,
   FreezeAction,
   HealAction,
+  BumpDiceAction,
+  BurnAction,
+  ShieldAction,
   LockAction,
   PoisonAction,
-  RerollDiceAction,
-  ShieldAction,
-} from '../models/card-action';
+  DoubleDamageAction,
+} from '../models/card-actions';
 
 const DICE = `<i class="material-icons">border_style</i>`;
 
@@ -23,7 +24,7 @@ export const CARDS = {
 
   HEAL_AND_ATTACK: [
     new Card('HEAL', `Heals ${DICE}`, CardType.Heal, [new HealAction()]),
-    new Card('ATTACK', `Do ⚔2x${DICE} damage`, CardType.Attack, [new DamageAction()]),
+    new Card('ATTACK', `Do ⚔2x${DICE} damage`, CardType.Attack, [new DoubleDamageAction()]),
     new Card('ATTACK AND HEAL', 'Attacks then heals', CardType.Neutral, [new DamageAction(), new HealAction()]), // ???
   ],
 
@@ -44,7 +45,7 @@ export const CARDS = {
 
   DIFFERENT_TYPES: [
     new Card('BUMP', `Dice value +1`, CardType.Heal, [new BumpDiceAction()]),
-    new Card('BATTLE AXE', `Do ⚔2x${DICE} damage`, CardType.Attack, [new DamageAction()]),
+    new Card('BATTLE AXE', `Do ⚔2x${DICE} damage`, CardType.Attack, [new DoubleDamageAction()]),
     new Card('BUCKLER', `Add 🛡4 to shield`, CardType.Shield, [new ShieldAction(4)]),
     new Card('SNOWBALL', `Do ❄${DICE} damage <br> Freeze ❄1 dice`, CardType.Ice, [
       new DamageAction(),
