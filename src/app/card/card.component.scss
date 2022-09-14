@@ -4,9 +4,6 @@
   --dice-size: 3rem;
   --dice-border-radius: 0.5rem;
 
-  width: 15rem;
-  height: 15rem;
-
   display: grid;
   grid-template-rows: 2rem 1fr;
   text-align: center;
@@ -16,8 +13,13 @@
   background-color: var(--background);
   box-shadow: 2px 2px 3px 2px #3338;
 
+
+  width: 15rem;
+  height: 15rem; // Высота по умолчанию, реалная высота описано внизу
+
+  // Реалная высота по размеру карты
   &.size-small  { height: 10rem; }
-  &.size-medium { height: 10rem; }
+  &.size-medium { height: 12rem; }
   &.size-big    { height: 20rem; grid-row: 1 / span 2; }
 
   &.neutral { --background: #555; }

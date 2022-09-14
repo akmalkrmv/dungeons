@@ -27,7 +27,7 @@
         display: grid;
         place-items: center;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 2rem;
+        gap: 1rem 2rem;
 
         .card {
           position: relative;
@@ -37,6 +37,9 @@
       .special-cards {
         position: relative;
         min-height: 25rem;
+
+        display: grid;
+        place-items: center;
       }
     }
 
