@@ -1,1 +1,5 @@
-<p>level works!</p>
+<section>
+  <div *ngFor="let enemy of enemies$ | async" class="enemy">{{ enemy.name }}</div>
+</section>
+<section></section>
+<section><app-level-stats></app-level-stats></section>

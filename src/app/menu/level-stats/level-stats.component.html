@@ -1,0 +1,32 @@
+<ng-container *ngIf="player$ | async as player">
+  <div>
+    <h3>{{ player.name | uppercase }}</h3>
+  </div>
+
+  <div class="health-stats">
+    <div>{{ player.health }}/{{ player.maxHealth }}</div>
+    <div class="health-stats__bottom">
+      <div class="money-stats"><i class="material-icons">monetization_on</i>{{ player.money }}</div>
+      <div class="dice-stats"><i class="material-icons">casino</i>x{{ player.dicesCount }}</div>
+    </div>
+  </div>
+
+  <div class="level-stats">
+    <h2 class="level">LEVEL 1</h2>
+    <h3 class="level-up">Level up in 2</h3>
+  </div>
+
+  <div><button class="btn">EQUIPMENT</button></div>
+
+  <div class="floor-stats">
+    <div class="floors">
+      <i class="material-icons active">elevator</i>
+      <i class="material-icons">elevator</i>
+      <i class="material-icons">elevator</i>
+      <i class="material-icons">elevator</i>
+      <i class="material-icons">elevator</i>
+      <i class="material-icons">elevator</i>
+    </div>
+    <div>Floor 1</div>
+  </div>
+</ng-container>

@@ -9,6 +9,7 @@ export interface IPlayer {
 
   maxHealth: number;
   health: number;
+  money: number;
 
   dicesCount: number;
   dices: IDice[];
@@ -24,6 +25,7 @@ export class Player implements IPlayer {
   isMainCharacter: boolean = true;
 
   health: number = this.maxHealth;
+  money: number = 0;
 
   maxPower: number = 8;
   power: number = this.maxPower;
@@ -44,6 +46,7 @@ export class Enemy implements IPlayer {
   isMainCharacter: boolean = false;
 
   health: number = this.maxHealth;
+  money: number = 0;
 
   initialCardsCount: number = 1;
   cards: ICard[] = [];

@@ -16,6 +16,8 @@ import { LossComponent } from './battle/finish/loss/loss.component';
 import { EffectsComponent } from './player/effects.component';
 import { ChooseCharacterComponent } from './menu/choose-character/choose-character.component';
 import { LevelComponent } from './menu/level/level.component';
+import { EquipmentComponent } from './menu/equipment/equipment.component';
+import { LevelStatsComponent } from './menu/level-stats/level-stats.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { LevelComponent } from './menu/level/level.component';
     EffectsComponent,
     ChooseCharacterComponent,
     LevelComponent,
+    EquipmentComponent,
+    LevelStatsComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DragDropModule],
   providers: [],

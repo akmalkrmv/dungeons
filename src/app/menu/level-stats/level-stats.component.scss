@@ -1,0 +1,45 @@
+:host {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #0006;
+  color: white;
+
+  .health-stats {
+    min-width: 10rem;
+    display: flex;
+    flex-direction: column;
+
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .money-stats {
+      color: gold;
+    }
+  }
+
+  .level-stats {
+    text-align: center;
+
+    .level {
+      margin: 0;
+    }
+    .level-up {
+      margin: 0;
+      font-weight: normal;
+    }
+  }
+
+  .floor-stats {
+    text-align: center;
+    .floors {
+      color: #fff6;
+      .active {
+        color: white;
+      }
+    }
+  }
+}
