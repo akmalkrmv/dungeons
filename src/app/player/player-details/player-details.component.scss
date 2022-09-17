@@ -29,9 +29,26 @@
   }
 
   .health-bar {
-    text-align: center;
+    position: relative;
     background-color: #b11e;
+
+    .health-text {
+      top: 5px;
+      left: 40%;
+      position: absolute;
+      z-index: 2;
+    }
+    .health {
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      position: absolute;
+      z-index: 1;
+      background-color: #228b22;
+    }
   }
+
   .break-bar {
     text-align: center;
     background-color: #cc1e;

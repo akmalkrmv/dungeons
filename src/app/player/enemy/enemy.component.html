@@ -3,7 +3,11 @@
     <span>{{ enemy.name }}</span>
     <span><i class="material-icons">casino</i>x{{ enemy.dicesCount }}</span>
   </div>
-  <div class="health-bar">{{ enemy.health }} / {{ enemy.maxHealth }}</div>
+  <div class="health-bar">
+    &nbsp;
+    <div class="health-text">{{ enemy.health }} / {{ enemy.maxHealth }}</div>
+    <div class="health" [style.width]="(enemy.health * 100) / enemy.maxHealth + '%'"></div>
+  </div>
   <div class="stats-bar">
     <app-effects [effects]="enemy.effects"></app-effects>
   </div>
