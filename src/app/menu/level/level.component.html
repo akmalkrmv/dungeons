@@ -1,5 +1,7 @@
 <section>
-  <div *ngFor="let enemy of enemies$ | async" class="enemy">{{ enemy.name }}</div>
+  <div class="enemy-list">
+    <div *ngFor="let enemy of enemies$ | async" class="enemy" (click)="startBattle(enemy)">{{ enemy.name }}</div>
+  </div>
 </section>
 <section></section>
 <section><app-level-stats></app-level-stats></section>
