@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CARDS } from '../data/cards.data';
+import { PLAYER_CARDS } from '../data/player-cards.data';
 import { ICard } from '../models/card';
 import { IPlayer } from '../models/player';
 
@@ -11,12 +11,12 @@ export class CardService {
 
   generateCards(player?: IPlayer): ICard[] {
     if (player && !player.isMainCharacter) {
-      return this.autoOrderCards([...CARDS.SORCERESS]);
+      return this.autoOrderCards([...PLAYER_CARDS.SORCERESS]);
     }
 
-    // return this.autoOrderCards([...CARDS.HEAL_AND_ATTACK]);
-    // return this.autoOrderCards([...CARDS.DIFFERENT_TYPES]);
-    return this.autoOrderCards([...CARDS.EFFECTS]);
+    // return this.autoOrderCards([...PLAYER_CARDS.HEAL_AND_ATTACK]);
+    // return this.autoOrderCards([...PLAYER_CARDS.DIFFERENT_TYPES]);
+    return this.autoOrderCards([...PLAYER_CARDS.EFFECTS]);
   }
 
   generateSpecialCards(player?: IPlayer): ICard[] {
@@ -24,7 +24,7 @@ export class CardService {
       return [];
     }
 
-    return [...CARDS.SPECIALS];
+    return [...PLAYER_CARDS.SPECIALS];
   }
 
   autoOrderCards(cards: ICard[]): ICard[] {

@@ -55,5 +55,5 @@ export class Enemy implements IPlayer {
   dices: IDice[] = [];
   effects: ICardEffect[] = [];
 
-  constructor(public name: string, public maxHealth: number, public dicesCount: number) {}
+  constructor(public name: string, public level: number, public maxHealth: number, public dicesCount: number) {}
 }
