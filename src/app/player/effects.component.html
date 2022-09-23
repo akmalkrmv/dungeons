@@ -1,0 +1,7 @@
+<div class="effects" *ngIf="effects && effects.length">
+  <div *ngFor="let effect of effects" [style.color]="effect.color" class="effect">
+    <i class="material-icons">{{ effect.icon }}</i>
+    <ng-container *ngIf="effects.length === 1">{{ effect.name }}</ng-container>
+    {{ effect.amount }}
+  </div>
+</div>

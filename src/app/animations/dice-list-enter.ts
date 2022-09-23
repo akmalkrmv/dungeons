@@ -1,7 +1,7 @@
 import { trigger, transition, style, animate, stagger, query } from '@angular/animations';
 import { IDungeonsAnimationMetadata } from './dungeons-animation-metadata';
 
-const DICE_LIST_ENTER = 'DICE_ENTER';
+const DICE_LIST_ENTER = 'DICE_LIST_ENTER';
 export const DICE_LIST_ENTER_ANIMATION: IDungeonsAnimationMetadata = {
   NAME: DICE_LIST_ENTER,
   TRIGGER_NAME: `@${DICE_LIST_ENTER}`,

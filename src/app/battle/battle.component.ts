@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { CARD_LIST_ENTER_ANIMATION } from '../animations/card-list-enter';
 import { ICard } from '../models/card';
-import { IPlayer } from '../models/player';
 import { BattleService } from '../services/battle.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { BattleService } from '../services/battle.service';
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [CARD_LIST_ENTER_ANIMATION.TRIGGER],
 })
 export class BattleComponent implements OnInit {
   player$ = this.battle.player$;
@@ -57,22 +58,5 @@ export class BattleComponent implements OnInit {
       cards: mover.cards.filter((item) => item !== card),
       specialCards: mover.specialCards.filter((item) => item !== card),
     } as any);
-  }
-
-  getGridColumnsCount(mover: IPlayer) {
-    return mover.initialCardsCount <= 4 ? 2 : 3;
-  }
-
-  getGridTemplateColumns(mover: IPlayer): string {
-    const columns = this.getGridColumnsCount(mover);
-    return `repeat(${columns}, 1fr)`;
-  }
-  getGridRowStart(mover: IPlayer, index: number): number {
-    const columns = this.getGridColumnsCount(mover);
-    return Math.ceil((index + 1) / columns);
-  }
-  getGridColumnStart(mover: IPlayer, index: number): number {
-    const columns = this.getGridColumnsCount(mover);
-    return (index % columns) + 1;
   }
 }

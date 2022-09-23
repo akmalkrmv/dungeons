@@ -1,0 +1,29 @@
+:host {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 4fr 1fr;
+  gap: 2rem;
+  padding: 0.5rem;
+
+  .cards {
+    position: relative;
+    min-height: 25rem;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem 2rem;
+
+    .card {
+      position: relative;
+    }
+  }
+
+  .special-cards {
+    position: relative;
+    min-height: 25rem;
+
+    display: grid;
+    place-items: center;
+  }
+}

@@ -1,0 +1,15 @@
+<div class="cards" [style.grid-template-columns]="getGridTemplateColumns(mover)">
+  <div
+    *ngFor="let card of mover.cards"
+    class="card"
+    [style.grid-row-start]="getGridRowStart(mover, card.order)"
+    [style.grid-column-start]="getGridColumnStart(mover, card.order)"
+  >
+    <app-card [card]="card" (used)="useCard($event)"></app-card>
+  </div>
+</div>
+<div class="special-cards">
+  <ng-container *ngFor="let card of mover.specialCards">
+    <app-card [card]="card" (used)="useCard($event)"></app-card>
+  </ng-container>
+</div>

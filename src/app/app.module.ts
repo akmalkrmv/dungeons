@@ -18,6 +18,7 @@ import { ChooseCharacterComponent } from './menu/choose-character/choose-charact
 import { LevelComponent } from './menu/level/level.component';
 import { EquipmentComponent } from './menu/equipment/equipment.component';
 import { LevelStatsComponent } from './menu/level-stats/level-stats.component';
+import { CardListComponent } from './card-list/card-list.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LevelStatsComponent } from './menu/level-stats/level-stats.component';
     LevelComponent,
     EquipmentComponent,
     LevelStatsComponent,
+    CardListComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DragDropModule],
   providers: [],

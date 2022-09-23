@@ -42,6 +42,10 @@ export class BattleService {
   }
 
   endBattle(victory: boolean) {
+    if (!victory) {
+      this.resetHealth(this.player$);
+    }
+    this.resetHealth(this.enemy$);
     this.router.navigateByUrl(victory ? '/battle/victory' : '/battle/loss');
   }
 
@@ -62,6 +66,15 @@ export class BattleService {
       specialCards: this.cardService.generateSpecialCards(target),
       initialCardsCount: cards.length,
       cards,
+    });
+  }
+
+  resetHealth<T extends BehaviorSubject<IPlayer>>(target$: T): void {
+    const target = target$.value;
+
+    target$.next({
+      ...target,
+      health: target.maxHealth,
     });
   }
 
