@@ -22,4 +22,8 @@ export class LevelComponent implements OnInit {
     this.playerService.enemy$.next(enemy);
     this.router.navigateByUrl('/battle');
   }
+
+  regenerate() {}
+  getNewCard() {}
+  upgrade() {}
 }

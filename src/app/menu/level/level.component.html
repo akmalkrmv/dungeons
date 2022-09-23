@@ -1,7 +1,34 @@
 <section>
+  <!-- Enemies -->
   <div class="enemy-list">
     <div *ngFor="let enemy of enemies$ | async" class="enemy" (click)="startBattle(enemy)">{{ enemy.name }}</div>
   </div>
+
+  <!-- Health regeneration apples -->
+  <div class="enemy-list">
+    <div class="enemy" (click)="regenerate()">🍎 Apple</div>
+    <div class="enemy" (click)="regenerate()">🍎 Apple</div>
+    <div class="enemy" (click)="regenerate()">🍎 Apple</div>
+    <div class="enemy" (click)="regenerate()">🍎 Apple</div>
+  </div>
+
+  <!-- New cards -->
+  <div class="enemy-list">
+    <div class="enemy" (click)="getNewCard()">🎁 New card</div>
+    <div class="enemy" (click)="getNewCard()">🎁 New card</div>
+    <div class="enemy" (click)="getNewCard()">🎁 New card</div>
+    <div class="enemy" (click)="getNewCard()">🎁 New card</div>
+  </div>
+
+  <!-- Upgrade tools -->
+  <div class="enemy-list">
+    <div class="enemy" (click)="upgrade()">🔼 Upgrade</div>
+    <div class="enemy" (click)="upgrade()">🔼 Upgrade</div>
+    <div class="enemy" (click)="upgrade()">🔼 Upgrade</div>
+    <div class="enemy" (click)="upgrade()">🔼 Upgrade</div>
+  </div>
 </section>
-<section></section>
-<section><app-level-stats></app-level-stats></section>
+
+<section>
+  <app-level-stats></app-level-stats>
+</section>
