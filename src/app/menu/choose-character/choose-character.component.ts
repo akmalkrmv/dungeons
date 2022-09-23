@@ -14,6 +14,6 @@ export class ChooseCharacterComponent {
   constructor(private playerService: PlayerService, private router: Router) {}
 
   start() {
-    this.router.navigateByUrl('/battle');
+    this.router.navigateByUrl('/level');
   }
 }

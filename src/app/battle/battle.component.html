@@ -1,7 +1,7 @@
 <main cdkDropListGroup>
   <section class="enemy-section" [class.active]="!(isPlayersTurn$ | async)">
     <ng-container *ngIf="enemy$ | async as enemy">
-      <app-dice-list *ngIf="!(isPlayersTurn$ | async)" [dices]="enemy.dices"></app-dice-list>
+      <app-dice-list *ngIf="!(isPlayersTurn$ | async)" [dices]="enemy.dices" [inverse]="true"></app-dice-list>
       <app-enemy [enemy]="enemy" class="enemy-info"></app-enemy>
     </ng-container>
   </section>

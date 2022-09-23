@@ -10,14 +10,14 @@ import {
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { ICard } from '../models/card';
 import { IDice } from '../models/dice';
-import { popUp } from '../animations';
+import { ACTIVATE_CARD_ANIMATION } from '../animations';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   // changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [popUp],
+  animations: [ACTIVATE_CARD_ANIMATION.TRIGGER],
 })
 export class CardComponent {
   @Input() card!: ICard;
@@ -27,11 +27,10 @@ export class CardComponent {
   @HostBinding('class') get class() {
     return `${this.card.cardType} size-${this.card.size}`;
   }
-  @HostBinding('@popUp') get popUp() {
+  @HostBinding(ACTIVATE_CARD_ANIMATION.TRIGGER_NAME) get animation() {
     return this.dice === undefined ? '' : 'active';
   }
-
-  @HostListener('@popUp.done') popUpDone() {
+  @HostListener(ACTIVATE_CARD_ANIMATION.DONE) animationDone() {
     this.dice && this.used.emit(this.card);
     this.dice = undefined;
   }

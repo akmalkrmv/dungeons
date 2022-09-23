@@ -4,12 +4,18 @@
   box-sizing: border-box;
 }
 
+:root {
+  --dice-size: 4rem;
+  --dice-dot-size: 0.7rem;
+  --dice-border-radius: 0.2rem;
+}
+
 html,
 body {
   max-height: 100%;
   margin: 0;
   padding: 0;
-  // overflow: hidden;
+  overflow: hidden;
   background-color: #f0deb4;
   user-select: none;
   cursor: default;

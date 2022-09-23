@@ -26,6 +26,7 @@
   .stats-bar {
     padding: 6px 10px;
     border-radius: 4px;
+    min-height: 36px;
   }
 
   .health-bar {
@@ -55,5 +56,8 @@
   }
   .stats-bar {
     background-color: #333e;
+  }
+  .stats-bar:empty {
+    background-color: transparent;
   }
 }
