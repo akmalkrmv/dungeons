@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { ENEMIES } from 'src/app/data';
+import { BehaviorSubject, Observable, of, switchMap } from 'rxjs';
 import { IPlayer } from 'src/app/models/player';
 import { PlayerService } from 'src/app/services/player.service';
 
@@ -11,12 +10,16 @@ import { PlayerService } from 'src/app/services/player.service';
   styleUrls: ['./level.component.scss'],
 })
 export class LevelComponent implements OnInit {
-  enemies$ = new BehaviorSubject<IPlayer[]>(Object.values(ENEMIES));
+  level$ = new BehaviorSubject<number>(1);
   chests$ = new BehaviorSubject<any[]>([]);
+
+  enemies$!: Observable<IPlayer[]>;
 
   constructor(private playerService: PlayerService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.enemies$ = this.level$.pipe(switchMap((level) => of(this.playerService.getEnemiesByLevel(level))));
+  }
 
   startBattle(enemy: IPlayer) {
     this.playerService.enemy$.next(enemy);
