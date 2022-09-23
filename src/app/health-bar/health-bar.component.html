@@ -1,0 +1,5 @@
+<div class="health-bar">
+  &nbsp;
+  <div class="health-text">{{ value }} / {{ maxValue }}</div>
+  <div class="health" [style.width]="(value * 100) / maxValue + '%'"></div>
+</div>

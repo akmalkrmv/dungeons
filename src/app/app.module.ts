@@ -19,6 +19,7 @@ import { LevelComponent } from './menu/level/level.component';
 import { EquipmentComponent } from './menu/equipment/equipment.component';
 import { LevelStatsComponent } from './menu/level-stats/level-stats.component';
 import { CardListComponent } from './card-list/card-list.component';
+import { HealthBarComponent } from './health-bar/health-bar.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CardListComponent } from './card-list/card-list.component';
     EquipmentComponent,
     LevelStatsComponent,
     CardListComponent,
+    HealthBarComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DragDropModule],
   providers: [],

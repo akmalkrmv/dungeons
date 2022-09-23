@@ -4,7 +4,7 @@
   </div>
 
   <div class="health-stats">
-    <div>{{ player.health }}/{{ player.maxHealth }}</div>
+    <app-health-bar [value]="player.health" [maxValue]="player.maxHealth"></app-health-bar>
     <div class="health-stats__bottom">
       <div class="money-stats"><i class="material-icons">monetization_on</i>{{ player.money }}</div>
       <div class="dice-stats"><i class="material-icons">casino</i>x{{ player.dicesCount }}</div>
