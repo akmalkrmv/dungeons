@@ -2,7 +2,7 @@
   --background: #555;
   --border-radius: 0.8rem;
   --dice-size: 3rem;
-  --dice-border-radius: 0.5rem;
+  --dice-border-radius: 0.2rem;
 
   display: grid;
   grid-template-rows: 2rem 1fr;
@@ -51,7 +51,7 @@
     .drop-zone {
       aspect-ratio: 1;
       width: var(--dice-size);
-      border: 0.15rem #fff dashed;
+      border: 0.1rem #fff dashed;
       border-radius: var(--dice-border-radius);
       display: grid;
       place-items: center;
