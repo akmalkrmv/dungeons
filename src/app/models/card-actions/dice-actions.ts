@@ -4,6 +4,8 @@ import { Dice } from '../dice';
 import { ICardAction } from './card-action';
 
 export class BumpDiceAction implements ICardAction {
+  description = `Dice value +1`;
+
   act(battle: IBattleInfo): IBattleInfo {
     const { player, dice } = battle;
     const bumped = dice.value + 1;
@@ -13,6 +15,8 @@ export class BumpDiceAction implements ICardAction {
   }
 }
 export class ReturnDiceAction implements ICardAction {
+  description = `Return the ddice`;
+
   act(battle: IBattleInfo): IBattleInfo {
     const { player, dice } = battle;
     const updated = { ...player, dices: [...player.dices, dice] };
@@ -20,6 +24,8 @@ export class ReturnDiceAction implements ICardAction {
   }
 }
 export class RerollDiceAction implements ICardAction {
+  description = `Get a new dice`;
+
   private diceService = new DiceService();
 
   act(battle: IBattleInfo): IBattleInfo {

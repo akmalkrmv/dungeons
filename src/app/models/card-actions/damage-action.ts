@@ -3,7 +3,11 @@ import { IBattleInfo } from '../battle-info';
 import { IDice } from '../dice';
 import { ICardAction } from './card-action';
 
+const DICE = `<i class="material-icons">border_style</i>`;
+
 export class DamageAction implements ICardAction {
+  description = `Do ⚔${this.damage || DICE} damage`;
+
   constructor(protected damage: number = 0) {}
 
   protected getDamage(dice: IDice) {
@@ -32,6 +36,8 @@ export class DamageAction implements ICardAction {
 }
 
 export class DoubleDamageAction extends DamageAction {
+  override description = `Do ⚔2x${this.damage || DICE} damage`;
+
   constructor(damage: number = 0) {
     super(damage);
   }
@@ -42,6 +48,8 @@ export class DoubleDamageAction extends DamageAction {
 }
 
 export class TripleDamageAction extends DamageAction {
+  override description = `Do ⚔3x${this.damage || DICE} damage`;
+
   constructor(damage: number = 0) {
     super(damage);
   }

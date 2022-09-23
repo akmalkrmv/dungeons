@@ -1,9 +1,12 @@
 import { IBattleInfo } from '../battle-info';
 import { ICardAction } from './card-action';
 
+const DICE = `<i class="material-icons">border_style</i>`;
 
 export class HealAction implements ICardAction {
-  constructor(private heal: number = 0) { }
+  description = `Heals ${this.heal || DICE}`;
+
+  constructor(private heal: number = 0) {}
 
   act(battle: IBattleInfo): IBattleInfo {
     const { player, dice } = battle;

@@ -3,6 +3,8 @@ import { ICardEffect, BurnEffect, LockEffect, FreezeEffect, PoisonEffect, Shield
 import { IPlayer } from '../player';
 import { ICardAction } from './card-action';
 
+const DICE = `<i class="material-icons">border_style</i>`;
+
 const addEffect = (player: IPlayer, effect: ICardEffect): IPlayer => {
   const existing = player.effects.find((item) => item.name === effect.name);
   if (existing) {
@@ -14,6 +16,8 @@ const addEffect = (player: IPlayer, effect: ICardEffect): IPlayer => {
 };
 
 export class BurnAction implements ICardAction {
+  description = `Burn 🔥${this.burn || DICE} dice`;
+
   constructor(private burn: number = 1) {}
 
   act(battle: IBattleInfo): IBattleInfo {
@@ -21,6 +25,8 @@ export class BurnAction implements ICardAction {
   }
 }
 export class LockAction implements ICardAction {
+  description = `Lock 🔒${this.lock || DICE} dice`;
+
   constructor(private lock: number = 1) {}
 
   act(battle: IBattleInfo): IBattleInfo {
@@ -28,6 +34,8 @@ export class LockAction implements ICardAction {
   }
 }
 export class FreezeAction implements ICardAction {
+  description = `Freeze ❄${this.freeze || DICE} dice`;
+
   constructor(private freeze: number = 1) {}
 
   act(battle: IBattleInfo): IBattleInfo {
@@ -35,6 +43,8 @@ export class FreezeAction implements ICardAction {
   }
 }
 export class PoisonAction implements ICardAction {
+  description = `Posion 💜${this.poison || DICE} dice`;
+
   constructor(private poison: number = 1) {}
 
   act(battle: IBattleInfo): IBattleInfo {
@@ -43,6 +53,8 @@ export class PoisonAction implements ICardAction {
 }
 
 export class ShieldAction implements ICardAction {
+  description = `Add 🛡${this.shield || DICE} to shield`;
+
   constructor(private shield: number = 0) {}
 
   act(battle: IBattleInfo): IBattleInfo {

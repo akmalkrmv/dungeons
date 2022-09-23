@@ -15,8 +15,6 @@ export enum CardType {
   Fire = 'fire',
   Poison = 'poison',
   Neutral = 'neutral',
-  RerollDice = 'rerolldice',
-  ReturnDice = 'returndice',
 }
 
 export enum CardPredicate {
@@ -44,16 +42,24 @@ export class Card implements ICard {
   dice?: IDice;
   uses?: number;
   predicate?: CardPredicate = CardPredicate.None;
+  description!: string;
+  size: CardSize = CardSize.Medium;
 
-  constructor(
-    public name: string,
-    public description: string,
-    public cardType: CardType | CardType[] = [],
-    public actions: ICardAction[] = [],
-    public size: CardSize = CardSize.Medium
-  ) {}
+  constructor(public name: string, public cardType: CardType | CardType[] = [], public actions: ICardAction[] = []) {
+    const [firstAction, secondAction] = actions;
+    this.description = [firstAction?.description, secondAction?.description]
+      .filter((description) => !!description)
+      .join(',<br>');
+  }
 
   assign(properties: Partial<Card>): Card {
     return Object.assign(this, properties);
   }
+}
+
+export class SmallCard extends Card {
+  override size: CardSize = CardSize.Small;
+}
+export class BigCard extends Card {
+  override size: CardSize = CardSize.Big;
 }

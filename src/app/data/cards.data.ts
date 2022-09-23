@@ -1,4 +1,4 @@
-import { Card, CardSize, CardType } from '../models/card';
+import { BigCard, Card, CardType } from '../models/card';
 import {
   DamageAction,
   RerollDiceAction,
@@ -12,57 +12,34 @@ import {
   DoubleDamageAction,
 } from '../models/card-actions';
 
-const DICE = `<i class="material-icons">border_style</i>`;
-
 export const CARDS = {
+  // ROBOBOT:
+  RAY_GUN: new Card('RAY GUN', CardType.Attack, [new DamageAction(3)]),
+  
   // SORCERESS:
-  CAULDRON: new Card('CAULDRON', `Do 1 damage, get a new dice`, CardType.Poison, [
-    new DamageAction(1),
-    new RerollDiceAction(),
-  ]),
-  ICE_SHARD: new Card('ICE SHARD', `Do ${DICE}, Freeze 1 dice`, CardType.Ice, [
-    new DamageAction(),
-    new FreezeAction(1),
-  ]),
-  INFLICTION: new Card('INFLICTION', `Do 3 damage`, CardType.Fire, [new DamageAction(3)]),
+  CAULDRON: new Card('CAULDRON', CardType.Poison, [new DamageAction(1), new RerollDiceAction()]),
+  ICE_SHARD: new Card('ICE SHARD', CardType.Ice, [new DamageAction(), new FreezeAction(1)]),
+  INFLICTION: new Card('INFLICTION', CardType.Fire, [new DamageAction(3)]),
 
   // HEAL_AND_ATTACK:
-  HEAL: new Card('HEAL', `Heals ${DICE}`, CardType.Heal, [new HealAction()]),
-  ATTACK: new Card('ATTACK', `Do ⚔2x${DICE} damage`, CardType.Attack, [new DoubleDamageAction()]),
-  ATTACK_AND_HEAL: new Card('ATTACK AND HEAL', 'Attacks then heals', CardType.Neutral, [
-    new DamageAction(),
-    new HealAction(),
-  ]), // ???
+  HEAL: new Card('HEAL', CardType.Heal, [new HealAction()]),
+  ATTACK: new Card('ATTACK', CardType.Attack, [new DoubleDamageAction()]),
+  ATTACK_AND_HEAL: new Card('ATTACK AND HEAL', CardType.Neutral, [new DamageAction(), new HealAction()]), // ???
 
   // EFFECTS:
-  BUMP: new Card('BUMP', `Dice value +1`, CardType.Heal, [new BumpDiceAction()]),
-  FIRE: new Card('FIRE', `Do ⚔2x${DICE} damage <br> Burn 🔥1 dice`, CardType.Fire, [
-    new DoubleDamageAction(),
-    new BurnAction(),
-  ]),
-  BUCKLER: new Card('BUCKLER', `Add 🛡4 to shield`, CardType.Shield, [new ShieldAction(4)]),
-  SNOWBALL: new Card('SNOWBALL', `Do ❄${DICE} damage <br> Freeze ❄1 dice`, CardType.Ice, [
-    new DamageAction(),
-    new FreezeAction(),
-  ]),
-  LOCK: new Card('LOCK', `Lock 🔒1 dice`, CardType.Neutral, [new LockAction()]),
-  TOXIC_OOZE: new Card('TOXIC OOZE', `Do ⚔${DICE} damage, <br> on 6, add 💜2 poison`, CardType.Poison, [
-    new DamageAction(),
-    new PoisonAction(2),
-  ]),
+  BUMP: new Card('BUMP', CardType.Heal, [new BumpDiceAction()]),
+  FIRE: new Card('FIRE', CardType.Fire, [new DoubleDamageAction(), new BurnAction()]),
+  BUCKLER: new Card('BUCKLER', CardType.Shield, [new ShieldAction(4)]),
+  SNOWBALL: new Card('SNOWBALL', CardType.Ice, [new DamageAction(), new FreezeAction()]),
+  LOCK: new Card('LOCK', CardType.Neutral, [new LockAction()]),
+  TOXIC_OOZE: new Card('TOXIC OOZE', CardType.Poison, [new DamageAction(), new PoisonAction(2)]),
 
   // DIFFERENT_TYPES:
-  BATTLE_AXE: new Card('BATTLE AXE', `Do ⚔2x${DICE} damage`, CardType.Attack, [new DoubleDamageAction()]),
+  BATTLE_AXE: new Card('BATTLE AXE', CardType.Attack, [new DoubleDamageAction()]),
 };
 
 export const SPECIAL_CARDS = {
-  COMBAT_ROLL: new Card(
-    'COMBAT ROLL',
-    'Reroll a dice',
-    CardType.Neutral,
-    [new RerollDiceAction()],
-    CardSize.Big
-  ).assign({
+  COMBAT_ROLL: new BigCard('COMBAT ROLL', CardType.Neutral, [new RerollDiceAction()]).assign({
     uses: 3,
   }),
 };
