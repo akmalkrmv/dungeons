@@ -8,9 +8,9 @@ import {
   Output,
 } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { ICard } from '../models/card';
-import { IDice } from '../models/dice';
-import { CARD_ENTER_ANIMATION, ACTIVATE_CARD_ANIMATION } from '../animations';
+import { ICard } from '../../models/card';
+import { IDice } from '../../models/dice';
+import { CARD_ENTER_ANIMATION, ACTIVATE_CARD_ANIMATION } from '../../animations';
 
 @Component({
   selector: 'app-card',

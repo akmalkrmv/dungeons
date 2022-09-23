@@ -1,8 +1,8 @@
 import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
-import { CARD_LIST_ENTER_ANIMATION } from '../animations/card-list-enter';
-import { ICard } from '../models/card';
-import { IPlayer } from '../models/player';
-import { BattleService } from '../services/battle.service';
+import { CARD_LIST_ENTER_ANIMATION } from '../../animations/card-list-enter';
+import { ICard } from '../../models/card';
+import { IPlayer } from '../../models/player';
+import { BattleService } from '../../services/battle.service';
 
 @Component({
   selector: 'app-card-list',

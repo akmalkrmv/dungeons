@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input } from '@angular/core';
-import { DICE_ENTER_ANIMATION } from '../animations';
+import { DICE_ENTER_ANIMATION } from '../../animations';
 
 @Component({
   selector: 'app-dice',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ICardEffect } from '../models/card-effect';
+import { ICardEffect } from '../../models/card-effect';
 
 @Component({
   selector: 'app-effects',
