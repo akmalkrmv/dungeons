@@ -8,6 +8,7 @@
     *ngFor="let dice of dices"
     cdkDrag
     [value]="dice.value"
+    [inverse]="inverse"
     [cdkDragData]="dice"
   >
   </app-dice>

@@ -5,7 +5,7 @@
   </div>
   <div class="health-bar">{{ enemy.health }} / {{ enemy.maxHealth }}</div>
   <div class="stats-bar">
-    <app-effects [effects]="enemy.effects"></app-effects>
+    <app-effects *ngIf="enemy.effects && enemy.effects.length" [effects]="enemy.effects"></app-effects>
   </div>
 </div>
 <div class="player"></div>

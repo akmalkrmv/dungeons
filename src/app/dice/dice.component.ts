@@ -10,10 +10,12 @@ import { DICE_ENTER_ANIMATION } from '../animations';
 })
 export class DiceComponent {
   @Input() value!: number;
+  @Input() inverse: boolean = false;
   private entered = false;
 
   @HostBinding(DICE_ENTER_ANIMATION.TRIGGER_NAME) get animation() {
-    return this.entered ? '' : 'active';
+    if (this.entered) return '';
+    return this.inverse ? 'inverse' : 'active';
   }
   @HostListener(DICE_ENTER_ANIMATION.DONE) animationDone() {
     this.entered = true;

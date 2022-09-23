@@ -7,6 +7,6 @@
   <div class="health-bar">{{ player.health }} / {{ player.maxHealth }}</div>
   <div class="break-bar">DRAW 3</div>
   <div class="stats-bar">
-    <app-effects [effects]="player.effects"></app-effects>
+    <app-effects *ngIf="player.effects && player.effects.length" [effects]="player.effects"></app-effects>
   </div>
 </div>

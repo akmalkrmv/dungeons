@@ -9,9 +9,14 @@ export const DICE_ENTER_ANIMATION: IDungeonsAnimationMetadata = {
   DONE: `@${DICE_ENTER}.done`,
   TRIGGER: trigger(DICE_ENTER, [
     transition('* => active', [
-      style({ position: 'relative', zIndex: 999, translate: '0 110vh' }),
-      animate('400ms', style({ translate: '0 -2vh' })),
-      animate('200ms', style({ translate: '0 0' })),
+      style({ position: 'relative', zIndex: 999, translate: '0 100vh' }),
+      animate('400ms', style({ translate: '0 -1vh' })),
+      animate('200ms', style({ translate: '0' })),
+    ]),
+    transition('* => inverse', [
+      style({ position: 'relative', zIndex: 999, translate: '0 -100vh' }),
+      animate('400ms', style({ translate: '0 1vh' })),
+      animate('200ms', style({ translate: '0' })),
     ]),
   ]),
 };

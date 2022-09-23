@@ -12,7 +12,7 @@ import { IDice } from 'src/app/models/dice';
 })
 export class DiceListComponent {
   @Input() dices!: IDice[];
-  @Input() inverse!: boolean;
+  @Input() inverse: boolean = false;
   private entered = false;
 
   @HostBinding(DICE_LIST_ENTER_ANIMATION.TRIGGER_NAME) get animation() {

@@ -40,4 +40,7 @@
   .stats-bar {
     background-color: #333e;
   }
+  .stats-bar:empty {
+    background-color: transparent;
+  }
 }
