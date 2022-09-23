@@ -4,7 +4,11 @@
     <span>{{ player.name }}</span>
     <span><i class="material-icons">casino</i>x{{ player.dicesCount }}</span>
   </div>
-  <div class="health-bar">{{ player.health }} / {{ player.maxHealth }}</div>
+  <div class="health-bar">
+    &nbsp;
+    <div class="health-text">{{ player.health }} / {{ player.maxHealth }}</div>
+    <div class="health" [style.width]="(player.health * 100) / player.maxHealth + '%'"></div>
+  </div>
   <div class="break-bar">DRAW 3</div>
   <div class="stats-bar">
     <app-effects *ngIf="player.effects && player.effects.length" [effects]="player.effects"></app-effects>
