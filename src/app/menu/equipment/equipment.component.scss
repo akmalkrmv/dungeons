@@ -17,12 +17,14 @@
     flex-grow: 1;
     padding-bottom: 20px;
 
-    gap: 3rem;
     display: grid;
     place-content: center;
     grid-template-areas:
       'backpack card-preview'
       'backpack equipped';
+
+    column-gap: var(--equipment-card-width);
+    row-gap: 3rem;
 
     .equipment {
       &__backpack {
