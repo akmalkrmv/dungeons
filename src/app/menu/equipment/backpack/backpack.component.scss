@@ -1,0 +1,24 @@
+:host {
+  display: grid;
+  justify-content: center;
+
+  h2 {
+    text-align: center;
+  }
+
+  table {
+    border-collapse: collapse;
+    background-color: hsl(230deg, 20, 30, 0.8);
+
+    td {
+      border: 2px dashed white;
+
+      .card-placeholder {
+        display: grid;
+        place-items: center;
+        width: var(--equipment-card-width);
+        height: var(--equipment-card-height);
+      }
+    }
+  }
+}
