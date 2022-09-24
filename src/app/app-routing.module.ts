@@ -5,6 +5,7 @@ import { LossComponent } from './battle/finish/loss/loss.component';
 import { VictoryComponent } from './battle/finish/victory/victory.component';
 import { ChooseCharacterComponent } from './menu/choose-character/choose-character.component';
 import { LevelComponent } from './menu/level/level.component';
+import { EquipmentComponent } from './menu/equipment/equipment.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'choose-character' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'battle/victory', component: VictoryComponent },
   { path: 'choose-character', component: ChooseCharacterComponent },
   { path: 'level', component: LevelComponent },
+  { path: 'equipment', component: EquipmentComponent },
 ];
 
 @NgModule({
