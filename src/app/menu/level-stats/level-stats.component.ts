@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PlayerService } from 'src/app/services/player.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { PlayerService } from 'src/app/services/player.service';
   styleUrls: ['./level-stats.component.scss'],
 })
 export class LevelStatsComponent implements OnInit {
+  @Input() inEquipmentMenu = false;
+
   player$ = this.playerService.player$;
 
   constructor(private playerService: PlayerService) {}

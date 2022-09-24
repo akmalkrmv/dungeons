@@ -17,7 +17,8 @@
   </div>
 
   <div>
-    <button class="btn" [routerLink]="['/equipment']">EQUIPMENT</button>
+    <button *ngIf="!inEquipmentMenu" class="btn" routerLink="/equipment">EQUIPMENT</button>
+    <button *ngIf="inEquipmentMenu" class="btn" routerLink="/level">BACK</button>
   </div>
 
   <div class="floor-stats">

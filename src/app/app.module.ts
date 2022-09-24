@@ -20,6 +20,9 @@ import { EquipmentComponent } from './menu/equipment/equipment.component';
 import { LevelStatsComponent } from './menu/level-stats/level-stats.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { HealthBarComponent } from './components/health-bar/health-bar.component';
+import { BackpackComponent } from './menu/equipment/backpack/backpack.component';
+import { CardPreviewComponent } from './menu/equipment/card-preview/card-preview.component';
+import { EquippedComponent } from './menu/equipment/equipped/equipped.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { HealthBarComponent } from './components/health-bar/health-bar.component
     LevelStatsComponent,
     CardListComponent,
     HealthBarComponent,
+    BackpackComponent,
+    CardPreviewComponent,
+    EquippedComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DragDropModule],
   providers: [],
