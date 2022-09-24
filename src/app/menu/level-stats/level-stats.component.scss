@@ -6,6 +6,10 @@
   background-color: #0006;
   color: white;
 
+  & > * {
+    flex-basis: 15vw;
+  }
+
   .health-stats {
     min-width: 10rem;
     display: flex;

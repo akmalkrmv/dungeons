@@ -26,7 +26,10 @@ export class LevelComponent implements OnInit {
     this.router.navigateByUrl('/battle');
   }
 
-  regenerate() {}
+  regenerate() {
+    const player = this.playerService.player$.value;
+    this.playerService.player$.next({ ...player, health: Math.min(player.maxHealth, player.health + 10) });
+  }
   getNewCard() {}
   upgrade() {}
 }
