@@ -3,13 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-card-preview',
   templateUrl: './card-preview.component.html',
-  styleUrls: ['./card-preview.component.scss']
+  styleUrls: ['./card-preview.component.scss'],
 })
 export class CardPreviewComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
+
+export class CdkDragDropOverviewExample {}

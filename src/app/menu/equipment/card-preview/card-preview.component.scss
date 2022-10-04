@@ -4,3 +4,12 @@
   display: grid;
   place-items: center;
 }
+
+.example-box {
+  display: grid;
+  place-items: center;
+  background: red;
+  width: var(--equipment-card-width);
+  height: var(--equipment-card-height);
+  border: 5px green solid;
+}
