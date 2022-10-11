@@ -1,5 +1,6 @@
 <h2>EQUIPPED</h2>
 
+<!-- TODO: Use reusable component -->
 <table>
   <tr *ngFor="let row of rows">
     <td *ngFor="let column of columns">
@@ -7,9 +8,20 @@
         class="card-placeholder"
         cdkDropList
         (cdkDropListDropped)="drop($event)"
-        [cdkDropListData]="cards[row * column]"
+        [cdkDropListData]="cardsList[row * columns.length + column]"
       >
-        CARD
+        <ng-container *ngIf="cardsList[row * columns.length + column][0] as card">
+          <div
+            class="equipment-card"
+            cdkDrag
+            [cdkDragData]="card"
+            [ngClass]="card.cardType"
+            (mouseenter)="hovered.emit(card)"
+            (mouseleave)="hovered.emit()"
+          >
+            {{ card.name }}
+          </div>
+        </ng-container>
       </div>
     </td>
   </tr>

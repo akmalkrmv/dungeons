@@ -85,3 +85,31 @@ app-card {
     background-color: hsl(0, 100%, 60%);
   }
 }
+
+@mixin setBgColorAndHover($baseColor) {
+  background-color: $baseColor;
+  &:hover {
+    background-color: lighten($baseColor, 6%);
+  }
+}
+
+.equipment-card {
+  display: grid;
+  place-items: center;
+  width: var(--equipment-card-width);
+  height: var(--equipment-card-height);
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bolder;
+
+  @include setBgColorAndHover(red);
+  
+  &.neutral { @include setBgColorAndHover(#555); }
+  &.heal    { @include setBgColorAndHover(#529d2a); }
+  &.shield  { @include setBgColorAndHover(orange); }
+  &.attack  { @include setBgColorAndHover(#cfcf17); }
+  &.ice     { @include setBgColorAndHover(#6ed5f7); }
+  &.fire    { @include setBgColorAndHover(red); }
+  &.poison  { @include setBgColorAndHover(purple); }
+}

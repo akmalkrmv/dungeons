@@ -1,15 +1,27 @@
 <h2>IN BACKPACK</h2>
 
+<!-- TODO: Make this reusable component -->
 <table>
   <tr *ngFor="let row of rows">
     <td *ngFor="let column of columns">
       <div
         class="card-placeholder"
         cdkDropList
+        [cdkDropListData]="cardsList[row * columns.length + column]"
         (cdkDropListDropped)="drop($event)"
-        [cdkDropListData]="cards[row * column]"
       >
-        {{ cards[row * column][0].name }}
+        <ng-container *ngIf="cardsList[row * columns.length + column][0] as card">
+          <div
+            class="equipment-card"
+            cdkDrag
+            [cdkDragData]="card"
+            [ngClass]="card.cardType"
+            (mouseenter)="hovered.emit(card)"
+            (mouseleave)="hovered.emit()"
+          >
+            {{ card.name }}
+          </div>
+        </ng-container>
       </div>
     </td>
   </tr>

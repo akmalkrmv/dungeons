@@ -23,12 +23,14 @@ export class CardComponent {
   @Input() card!: ICard;
   @Input() dice?: IDice;
   @Input() inverse: boolean = false;
+  @Input() noAnimation: boolean = false;
   @Output() used = new EventEmitter<ICard>();
 
   @HostBinding('class') get class() {
     return `${this.card.cardType} size-${this.card.size}`;
   }
   @HostBinding(ACTIVATE_CARD_ANIMATION.TRIGGER_NAME) get animation() {
+    if (this.noAnimation) return '';
     return this.dice === undefined ? '' : 'active';
   }
   @HostListener(ACTIVATE_CARD_ANIMATION.DONE) animationDone() {
@@ -38,6 +40,7 @@ export class CardComponent {
   }
 
   @HostBinding(CARD_ENTER_ANIMATION.TRIGGER_NAME) get enterAnimation() {
+    if (this.noAnimation) return '';
     if (this.entered) return '';
     return this.inverse ? 'inverse' : 'active';
   }

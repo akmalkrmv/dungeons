@@ -1,19 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { CARDS } from 'src/app/data';
-import { Card, CardType, ICard } from 'src/app/models/card';
-import { CardService } from 'src/app/services/card.service';
+import { Component, Input } from '@angular/core';
+import { ICard } from 'src/app/models/card';
 
 @Component({
   selector: 'app-card-preview',
   templateUrl: './card-preview.component.html',
   styleUrls: ['./card-preview.component.scss'],
 })
-export class CardPreviewComponent implements OnInit {
-  card: ICard = CARDS.ATTACK;
-
-  constructor() {}
-
-  ngOnInit(): void {}
+export class CardPreviewComponent {
+  @Input() card?: ICard;
 }
-
-export class CdkDragDropOverviewExample {}
