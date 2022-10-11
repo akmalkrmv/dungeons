@@ -1,14 +1,16 @@
 <h2>EQUIPPED</h2>
 
 <table>
-  <tr>
-    <td><div class="card-placeholder">CARD</div></td>
-    <td><div class="card-placeholder">CARD</div></td>
-    <td><div class="card-placeholder">CARD</div></td>
-  </tr>
-  <tr>
-    <td><div class="card-placeholder">CARD</div></td>
-    <td><div class="card-placeholder">CARD</div></td>
-    <td><div class="card-placeholder">CARD</div></td>
+  <tr *ngFor="let row of rows">
+    <td *ngFor="let column of columns">
+      <div
+        class="card-placeholder"
+        cdkDropList
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListData]="cards[row * column]"
+      >
+        CARD
+      </div>
+    </td>
   </tr>
 </table>

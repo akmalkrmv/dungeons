@@ -1,34 +1,16 @@
 <h2>IN BACKPACK</h2>
 
 <table>
-  <tr>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-  </tr>
-  <tr>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-  </tr>
-  <tr>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-  </tr>
-  <tr>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-  </tr>
-  <tr>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
-    <td><div class="card-placeholder" cdkDropList>CARD</div></td>
+  <tr *ngFor="let row of rows">
+    <td *ngFor="let column of columns">
+      <div
+        class="card-placeholder"
+        cdkDropList
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListData]="cards[row * column]"
+      >
+        {{ cards[row * column][0].name }}
+      </div>
+    </td>
   </tr>
 </table>
