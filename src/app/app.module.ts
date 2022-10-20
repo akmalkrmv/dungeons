@@ -13,6 +13,7 @@ import { CardListComponent } from './components/card-list/card-list.component';
 import { DiceComponent } from './components/dice/dice.component';
 import { DiceListComponent } from './components/dice-list/dice-list.component';
 import { HealthBarComponent } from './components/health-bar/health-bar.component';
+import { LevelBarComponent } from './components/level-bar/level-bar.component';
 
 // TODO: Create Battle module for these stuff:
 import { BattleComponent } from './battle/battle.component';
@@ -65,6 +66,7 @@ import { EquippedComponent } from './menu/equipment/equipped/equipped.component'
     BackpackComponent,
     CardPreviewComponent,
     EquippedComponent,
+    LevelBarComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DragDropModule],
   providers: [],
