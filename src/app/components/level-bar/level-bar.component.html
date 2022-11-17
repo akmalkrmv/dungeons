@@ -1,4 +1,5 @@
 <h2 class="level-text">Next Level:</h2>
 <div class="papa">
+  <!-- ngFor numbers arraydan divlarn siklichna yasaydi number value dan kichik boganiga yellow class beadi -->
   <div *ngFor="let number of numbers" [class.yellow]="number < value"></div>
 </div>

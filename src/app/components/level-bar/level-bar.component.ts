@@ -14,6 +14,8 @@ export class LevelBarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    // shundan qilinishini o'rganvol
+    // https://stackoverflow.com/questions/3746725/how-to-create-an-array-containing-1-n
     this.numbers = Array.from(Array(this.maxValue).keys());
   }
 }
