@@ -9,7 +9,11 @@ export class LevelBarComponent implements OnInit {
   @Input() value!: number;
   @Input() maxValue!: number;
 
+  numbers!: number[];
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.numbers = Array.from(Array(this.maxValue).keys());
+  }
 }
