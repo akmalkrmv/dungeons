@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { CARD_LIST_ENTER_ANIMATION } from '../animations/card-list-enter';
 import { ICard } from '../models/card';
 import { BattleService } from '../services/battle.service';
@@ -19,9 +19,22 @@ export class BattleComponent implements OnInit {
   mover$ = this.battle.mover$;
   taker$ = this.battle.taker$;
 
+  images = ['dungeon_1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg'];
+  currentImage = this.images[0];
+
   constructor(private battle: BattleService) {}
 
+  @HostBinding('style.backgroundImage') get backgroundImage() {
+    return `url('/assets/images/${this.currentImage}')`;
+  }
+
   ngOnInit(): void {
+    // images kolleksiyadan random son chiqdi
+    const random = Math.random() * this.images.length;
+    //  chiqqan random son kam tarafga yaxlitlandi
+    const index = Math.floor(random);
+    this.currentImage = this.images[index];
+
     this.battle.startBattle();
   }
 
